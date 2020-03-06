@@ -101,7 +101,7 @@ label {
 
 .header ul li span {
     margin-right: 7px;
-    color: #FF5722;
+    color: #ac00e6;
     font-size: 15px;
 }
 
@@ -125,7 +125,7 @@ label {
     width: 100%;
     padding: 12px;
     border: 1px solid rgba(47, 47, 47, 0.44);
-    color: #4d4d4d;
+    color: #ac00e6;
     font-size: 14px;
     font-family: 'Open Sans', sans-serif;
     letter-spacing: 1px;
@@ -246,11 +246,11 @@ label {
 .modal-body.modal-body-sub_agile input[type="password"] {
     font-size: 14px;
     letter-spacing: 1px;
-    color: #777;
+    color: #ac00e6;
     padding: 10px 0;
     border: 0;
     width: 100%;
-    border-bottom: 1px solid #dcdcdc;
+    border-bottom: 1px solid #ac00e6;
     background: none;
     -webkit-appearance: none;
     outline: none;
