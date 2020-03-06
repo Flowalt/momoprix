@@ -266,13 +266,13 @@ label {
     margin: 0;
     font-weight: 700;
     letter-spacing: 1px;
-    background: #1accfd;
+    background: #ac00e6;
     color: #fff;
     margin: 20px 0;
 }
 
 .modal-body.modal-body-sub_agile input[type="submit"]:hover {
-    background: #000;
+    background: #ac00e6;
 }
 
 h3.agileinfo_sign {
