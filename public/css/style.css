@@ -101,7 +101,7 @@ label {
 
 .header ul li span {
     margin-right: 7px;
-    color: #ac00e6;
+    color: #004080;
     font-size: 15px;
 }
 
@@ -125,7 +125,7 @@ label {
     width: 100%;
     padding: 12px;
     border: 1px solid rgba(47, 47, 47, 0.44);
-    color: #ac00e6;
+    color: #004080;
     font-size: 14px;
     font-family: 'Open Sans', sans-serif;
     letter-spacing: 1px;
@@ -148,8 +148,8 @@ label {
 
 .agileits_search input[type="search"] {
     outline: none;
-    border: 1px solid #191e21;
-    background: #fff;
+    border: 1px solid #004080;
+    background: #e6f2ff;
     border-right-color: transparent;
     color: #191e21;
     padding: 10px;
@@ -165,7 +165,7 @@ label {
     height: 42px;
     outline: none;
     box-shadow: none;
-    background: #1accfd;
+    background: #004080;
     padding: 0;
     border-radius: inherit;
     -webkit-appearance: none;
@@ -175,11 +175,15 @@ label {
 }
 
 .agileits_search .btn-default:hover {
-    background: #FF5722;
+    background: #e6f2ff;
 }
 
 .agileits_search span {
-    color: #fff;
+    color: #e6f2ff;
+}
+
+.agileits_search span:hover {
+    color: #004080;
 }
 
 #agileinfo_search {
@@ -194,9 +198,9 @@ label {
 #agileinfo-nav_search {
     outline: none;
     border: none;
-    color: #000;
+    color: #e6f2ff;
     font-size: 14px;
-    background: #f3f3f3;
+    background: #004080;
     padding: 15px 10px;
     width: 100%;
     letter-spacing: 1px;
@@ -213,7 +217,7 @@ label {
 }
 
 .logo_agile span {
-    color: #FF5722;
+    color: #004080;
 }
 
 .logo_agile h1 a {
@@ -246,11 +250,11 @@ label {
 .modal-body.modal-body-sub_agile input[type="password"] {
     font-size: 14px;
     letter-spacing: 1px;
-    color: #ac00e6;
+    color: #1accfd;
     padding: 10px 0;
     border: 0;
     width: 100%;
-    border-bottom: 1px solid #ac00e6;
+    border-bottom: 1px solid #004080;
     background: none;
     -webkit-appearance: none;
     outline: none;
@@ -266,13 +270,14 @@ label {
     margin: 0;
     font-weight: 700;
     letter-spacing: 1px;
-    background: #ac00e6;
-    color: #fff;
+    background: #004080;
+    color: #e6f2ff;
     margin: 20px 0;
 }
 
 .modal-body.modal-body-sub_agile input[type="submit"]:hover {
-    background: #ac00e6;
+    background: #e6f2ff;
+    color: #004080;
 }
 
 h3.agileinfo_sign {
@@ -282,7 +287,7 @@ h3.agileinfo_sign {
     letter-spacing: 1px;
     margin-bottom: 20px;
     text-align: center;
-    color: #FF5722;
+    color: #004080;
 }
 
 h3.agileinfo_sign span {
@@ -315,7 +320,7 @@ h3.agileinfo_sign span {
 /* //placeholder */
 
 .modal-body.modal-body-sub_agile p a {
-    color: #FF5722;
+    color: #004080;
 }
 
 .modal-body.modal-body-sub_agile p {
@@ -383,12 +388,12 @@ a.nav-stylehead {
 .navbar-default .navbar-nav>.active>a,
 .navbar-default .navbar-nav>.active>a:hover,
 .navbar-default .navbar-nav>.active>a:focus {
-    color: #FF5722;
+    color: #004080;
 }
 
 .navbar-default .navbar-nav>li>a:hover,
 .navbar-default .navbar-nav>li>a:focus {
-    color: #FF5722;
+    color: #004080;
 }
 
 .navbar-default .navbar-nav>li>a {
@@ -414,7 +419,7 @@ a.nav-stylehead {
 .agile_short_dropdown>li>a:hover {
     text-decoration: none;
     background-color: transparent;
-    color: #FF5722;
+    color: #004080;
 }
 
 .multi-gd-img img {
@@ -437,13 +442,13 @@ ul.multi-column-dropdown li a {
 }
 
 ul.multi-column-dropdown li a:hover {
-    color: #FF5722;
+    color: #004080;
 }
 
 .dropdown-menu>.active>a,
 .dropdown-menu>.active>a:hover,
 .dropdown-menu>.active>a:focus {
-    background-color: #FF5722;
+    background-color: #004080;
 }
 
 
@@ -476,11 +481,11 @@ a.simpleCart_empty {
 button.w3view-cart {
     outline: none;
     border: none;
-    background: #FF5722;
+    background: #1accfd;
     width: 48px;
     height: 43px;
     font-size: 24px;
-    color: #fff;
+    color: #004080;
 }
 
 
@@ -562,7 +567,7 @@ button.w3view-cart {
 .carousel-caption h2 span,
 .carousel-caption h3 span {
     font-weight: 800;
-    color: #FF5722;
+    color: #1accfd;
 }
 
 .carousel-caption p {
@@ -632,7 +637,7 @@ button.w3view-cart {
 
 .button2:hover,
 .button2:focus {
-    background: #FF5722;
+    background: #004080;
     color: #fff;
 }
 
