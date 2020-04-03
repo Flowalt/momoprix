@@ -5,6 +5,12 @@ index:
 register:
     path: /register
     controller: App\Controller\HomeController::register
+    methods: get
+
+registerPost:
+    path: /register
+    controller: App\Controller\UserController::registerPost
+    methods: post
 
 login:
     path: /login
