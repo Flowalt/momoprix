@@ -15,6 +15,12 @@ registerPost:
 login:
     path: /login
     controller: App\Controller\HomeController::login
+    methods: get
+
+loginPost:
+    path: /login
+    controller: App\Controller\UserController::loginPost
+    methods: post
 
 product:
     path: /product/{id}

@@ -20,6 +20,8 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class UserController extends AbstractController {
 
+    
+
     function CheckEmail():int{
         $db = mysqli_connect('localhost', 'root', '', 'intermarcher');
 
@@ -104,10 +106,33 @@ class UserController extends AbstractController {
 
 
 
-    public function loginPost()
+    /*public function loginPost(Request $request,UserPasswordEncoderInterface $passwordEncoder)
     {
-        return $this->render('index.html.twig');
-    }
+        if($_POST){
+            
+            $user = new Customer();
+            $pass= ($_POST['password']);
+            $email= ($_POST['Email']);
+        
+        
+            $passworEncoded = $passwordEncoder->isPasswordValid($user, $pass);
+            echo($passworEncoded." , " .$email);
+            $conn = mysqli_connect("localhost","root","","intermarcher");
+            $result = mysqli_query($conn,"SELECT * FROM customer WHERE email='".$email."'and password='".$passworEncoded."' ");
+            $count  = mysqli_num_rows($result);
+            
+            if($count==0) {
+                $message = "Invalid Username or Password!";
+                echo($message);
+                return $this->render('login.html.twig');
+            } else {
+                $message = "You are successfully authenticated!";
+                echo($message);
+                return $this->render('index.html.twig');
+            }
+        
+        }
+    }*/
 
     
     
