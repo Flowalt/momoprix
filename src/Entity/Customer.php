@@ -61,7 +61,7 @@ class Customer implements UserInterface
     private $dateOfBirth ;
 
     /**
-     * @var \DateTime|null
+     * @var \DateTime
      *
      * @ORM\Column(name="created", type="datetime", nullable=true, options={"default"="current_timestamp()"})
      */
@@ -95,6 +95,7 @@ class Customer implements UserInterface
     public function __construct()
     {
         $this->productIdproduct = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->created= new \DateTime();
     }
 
     public function getIdcustomer(): ?int
@@ -164,12 +165,12 @@ class Customer implements UserInterface
 
     public function getCreated(): ?\DateTimeInterface
     {
-        return $this->created;
+        return $this->created= new \DateTime();
     }
 
     public function setCreated(?\DateTimeInterface $created): self
     {
-        $this->created = $created;
+        $this->created = $created=new \DateTime() ;
 
         return $this;
     }

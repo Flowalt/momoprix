@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Customer;
+use DateTime;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -47,15 +48,15 @@ class UserController extends AbstractController {
         
         //Password Match
     
-        if($_POST){
+        /*if($_POST){
         if(($_POST['password']!= $_POST['repassword'])){
             echo("Oops! Password did not match! Try again.");
         }else{
             $int++;
         }  
-    }
+    }*/
 
-    if($int ==2){
+    if($int ==1){
 
       //Empty area
         if($_POST){
