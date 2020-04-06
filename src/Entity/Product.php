@@ -5,14 +5,16 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Product
  *
  * @ORM\Table(name="product", indexes={@ORM\Index(name="fk_product_category_idx", columns={"category_idcategory"})})
  * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ProductRepository")
  */
-class Product
+class Product 
 {
     /**
      * @var int

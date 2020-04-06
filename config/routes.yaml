@@ -26,6 +26,10 @@ product:
     path: /product/{id}
     controller: App\Controller\ProductController::product
 
+addProduct:
+    path: /panier/add/{id}
+    controller: App\Controller\CartController::addProduct
+
 profil:
     path: /profil/{id}
     controller: App\Controller\UserController::profil
@@ -35,8 +39,8 @@ payment:
     controller: App\Controller\OrderController::payment
 
 order:
-    path: /checkout
-    controller: App\Controller\OrderController::order
+    path: /panier
+    controller: App\Controller\CartController::panier
 
 history:
     path: /history
