@@ -51,7 +51,10 @@ class CartController extends AbstractController {
     public function panier(SessionInterface $session, RepositoryProductRepository $productRepository)
     {
     $panier = $session->get('panier',[]);
+
+
     $panierWithData = [];
+    $total=0;
     foreach($panier as $id => $quantity){
         $panierWithData[]=[
             'product'=> $productRepository->find($id),
@@ -59,19 +62,24 @@ class CartController extends AbstractController {
             'quantity'=> $quantity
         ];
 
-        $total=0;
+       
 
         foreach($panierWithData as $item){
             $totalItem= $item['product']->getPrice()* $item['quantity'];
             $total += $totalItem;
         }
     }
-    
+
     return $this-> render('checkout.html.twig', [
         'items' => $panierWithData,
         'total' => $total
 
     ]);
+    
+        return $this->redirectToRoute('order');
+        
+    
+
     }
 
     public function addQuantity($id,SessionInterface $session){
@@ -79,7 +87,7 @@ class CartController extends AbstractController {
         $panier = $session->get('panier',[]);
        
         if(!empty($panier[$id])){
-            $panier[$id]++;
+            $panier[$id]+=1;
         }
          
          $session-> set('panier', $panier);

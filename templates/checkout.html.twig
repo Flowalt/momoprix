@@ -63,6 +63,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</h3>
 			<!-- //tittle heading -->
 			<div class="checkout-right">
+
+			{% if items | length >0 %}
 				<div class="table-responsive">
 					<table class="timetable_sub">
 						<thead>
@@ -74,11 +76,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<th>Remove</th>
 							</tr>
 						</thead>
-						<tbody>
-							<tr class="rem1">
-								
-								<tbody>
-								{% for item in items %}
+						
+							<tr>
+							{% for item in items %}
 								<td class="invert-image">
 									<a href="single2.html">
 										<img src="public/images/a7.jpg" alt=" " class="img-responsive">
@@ -96,28 +96,31 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									</div>
 								</td>
 								<td class="invert">{{item.product.name}}</td>
-								<td class="invert">{{item.product.price}}</td>
+								<td class="invert">{{item.product.price}} €</td>
 								
 								<td  class="invert">
-									<div class="rem">
-										 <a href="{{path('removeProduct', {'id': item.product.idproduct}) }}" class="close1" >
-									</div>
+								<a href="{{path('removeProduct', {'id': item.product.idproduct}) }}" class="glyphicon glyphicon-remove-circle" style="color:black" >
 								</td>
 							</tr>
-							{% endfor %}
-							</tbody>
+							
+						
 							<tfoot>
 							<td colspan="3" class="text-right"> Total: 
 							</td>
-							<td>{{total}}</td>
+							<td>{{total}} €</td>
 							</table>
+							{% endfor %}
 
 							
 							
 						</tbody>
 					</table>
 				</div>
+				{% else %}
+			<p>Le panier est vide</p>
+			{% endif %}
 			</div>
+			
 			<div class="checkout-left">
 				<div class="address_form_agile">
 					<h4>Add a new Details</h4>
@@ -167,6 +170,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="clearfix"> </div>
 			</div>
 		</div>
+
 	</div>
 	<!-- //checkout page -->
 	<!-- newsletter -->

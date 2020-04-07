@@ -59,3 +59,8 @@ order:
 history:
     path: /history
     controller: App\Controller\OrderController::history
+
+details:
+    path: /product/details/{id}
+    controller: App\Controller\ProductController::details
+
