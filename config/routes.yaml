@@ -30,6 +30,19 @@ addProduct:
     path: /panier/add/{id}
     controller: App\Controller\CartController::addProduct
 
+addQuantity:
+    path: /panier/addquantity/{id}
+    controller: App\Controller\CartController::addQuantity
+
+deleteQuantity:
+    path: /panier/deleltequantity/{id}
+    controller: App\Controller\CartController::deleteQuantity
+
+removeProduct:
+    path: /panier/remove/{id}
+    controller: App\Controller\CartController::RemoveProduct
+    
+
 profil:
     path: /profil/{id}
     controller: App\Controller\UserController::profil
@@ -41,6 +54,7 @@ payment:
 order:
     path: /panier
     controller: App\Controller\CartController::panier
+    
 
 history:
     path: /history

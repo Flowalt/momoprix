@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Product;
+use App\Repository\ProductRepository as RepositoryProductRepository;
 use AppBundle\Repository\ProductRepository;
+use ProductRepository as GlobalProductRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -31,21 +33,70 @@ class CartController extends AbstractController {
       }
        
        $session-> set('panier', $panier);
-       dd($session->get('panier'));
-
+       return $this->redirectToRoute ('index');
     }
 
-    public function panier(SessionInterface $session, App\Controller\ProductRepository $productRepository){
+    public function removeProduct($id, SessionInterface $session){
+        $panier = $session->get('panier',[]);
+        if(!empty($panier)){
+            unset($panier[$id]);
+        }
+
+        $session->set('panier', $panier);
+        return $this->redirectToRoute ('order');
+    }
 
     
+
+    public function panier(SessionInterface $session, RepositoryProductRepository $productRepository)
+    {
     $panier = $session->get('panier',[]);
     $panierWithData = [];
     foreach($panier as $id => $quantity){
         $panierWithData[]=[
+            'product'=> $productRepository->find($id),
             
             'quantity'=> $quantity
         ];
+
+        $total=0;
+
+        foreach($panierWithData as $item){
+            $totalItem= $item['product']->getPrice()* $item['quantity'];
+            $total += $totalItem;
+        }
+    }
+    
+    return $this-> render('checkout.html.twig', [
+        'items' => $panierWithData,
+        'total' => $total
+
+    ]);
     }
 
-    }
+    public function addQuantity($id,SessionInterface $session){
+
+        $panier = $session->get('panier',[]);
+       
+        if(!empty($panier[$id])){
+            $panier[$id]++;
+        }
+         
+         $session-> set('panier', $panier);
+         return $this->redirectToRoute ('order');
+      }
+
+      public function deleteQuantity($id,SessionInterface $session){
+
+        $panier = $session->get('panier',[]);
+       
+        if(!empty($panier[$id])){
+            $panier[$id]-=1;
+        }
+         
+         $session-> set('panier', $panier);
+         return $this->redirectToRoute ('order');
+      }
+
+    
 }
