@@ -60,7 +60,10 @@ history:
     path: /history
     controller: App\Controller\OrderController::history
 
-details:
-    path: /product/details/{id}
-    controller: App\Controller\ProductController::details
+details_product:
+    path: /product{id}
+    controller: App\Controller\ProductController::detailsbis
+    
+
+
 

@@ -1,0 +1,32 @@
+{% extends "base.html.twig" %} {% block Copter %}
+
+<!-- Single Page -->
+	<div class="banner-bootom-w3-agileits">
+		<div class="container">
+			<div class="col-md-5 single-right-left ">
+				<div class="grid images_3_of_2">
+					<div class="flexslider">
+						
+							<li data-thumb="images/si.jpg">
+								<div class="thumb-image">
+									<img src="images/si.jpg" data-imagezoom="true" class="img-responsive" alt=""> </div>
+							</li>
+		
+						
+						<div class="clearfix"></div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-7 single-right-left simpleCart_shelfItem">
+				<h3>{{article.name}}</h3>
+				
+				<p>
+					<span class="item_price">{{article.price}} €</span>
+				</p>
+
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+
+{% endblock %}

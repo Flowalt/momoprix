@@ -10,19 +10,42 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class ProductController extends AbstractController {
 
-    function details($id){
-        //On appelle la liste de tous les articles
-        $article=$this->getDoctrine()->getRepository(Product::class)->find($id);
-        return $this->render('detailsProduct.html.twig', [
-            'article'=>$article
-        ]);
 
-       
+    
+    public function __constructor(
+        Product $product
+        
+    ) {
+        $this->product = $product;
+        
     }
+
+    function detailsbis($id){
+        
+        
+        $article=$this->getDoctrine()->getRepository(Product::class)->find($id);
+        
+        
+        
+
+        return $this->render('details.html.twig',[
+            'article'=> $article
+
+        ]);
+    }
+    function details(){
+        return $this-> render('details.html.twig');
+
+        
+    }
+    
+
+    
+
    
      
-    }
+    
 
   
-
+}
 

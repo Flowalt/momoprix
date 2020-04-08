@@ -4,15 +4,21 @@ namespace App\Controller;
 
 use App\Entity\Product;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class HomeController extends AbstractController {
 
     function index(){
         //On appelle la liste de tous les articles
         $articles=$this->getDoctrine()->getRepository(Product::class)->findAll();
+        
         return $this->render('index.html.twig', [
-            'articles'=>$articles
+            'articles'=>$articles,
+           
         ]);
+
+        
+        
     }
 
     function login(){
