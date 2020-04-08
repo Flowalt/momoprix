@@ -8,58 +8,30 @@
 		<ol class="carousel-indicators">
 			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
 			<li data-target="#myCarousel" data-slide-to="1" class=""></li>
-			<li data-target="#myCarousel" data-slide-to="2" class=""></li>
-			<li data-target="#myCarousel" data-slide-to="3" class=""></li>
+			
 		</ol>
 		<div class="carousel-inner" role="listbox">
 			<div class="item active">
 				<div class="container">
 					<div class="carousel-caption">
-						<h3>BON
-							<span>PLAN</span>
+						<h3>BIENVENUE
+							<span>SUR NOTRE SITE</span>
 						</h3>
-						<p>Obtenez
-							<span>10%</span> de réduction</p>
-						<a class="button2" href="product.html">Commandez maintenant</a>
+				
 					</div>
 				</div>
 			</div>
 			<div class="item item2">
 				<div class="container">
 					<div class="carousel-caption">
-						<h3>GROSSES
-							<span>ÉCONOMIES</span>
+						<h3>GRANDES VARIETES DE
+							<span>PRODUIT</span>
 						</h3>
-						<p>Jusqu'à
-							<span>30% </span>de réduction</p>
-						<a class="button2" href="product.html">Commandez maintenant</a>
+						
 					</div>
 				</div>
 			</div>
-			<div class="item item3">
-				<div class="container">
-					<div class="carousel-caption">
-						<h3>Bonnes 
-							<span>Affaires</span>
-						</h3>
-						<p>Au moins 
-							<span>20% </span>de réduction</p>
-						<a class="button2" href="product.html">Commandez maintenant</a>
-					</div>
-				</div>
-			</div>
-			<div class="item item4">
-				<div class="container">
-					<div class="carousel-caption">
-						<h3>Promo
-							<span> du jour</span>
-						</h3>
-						<p>Profitez de
-							<span>40%</span> de réduction</p>
-						<a class="button2" href="product.html">Commandez maintenant </a>
-					</div>
-				</div>
-			</div>
+			
 		</div>
 		<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
 			<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -213,5 +185,29 @@
 	</div>
 	<!-- //top products -->
 	
+	<!-- price range (top products) -->
+    <script src="js/jquery-ui.js"></script>
+    <script>
+        //<![CDATA[ 
+        $(window).load(function() {
+
+			type: "POST",
+            url: 'your_functions_address.php',
+            dataType: 'json'
+
+            $("#slider-range").slider({
+                range: true,
+                min: 0,
+                max: 100,
+                values: [0,100 ],
+                slide: function(event, ui) {
+                    $("#amount").val("€" + ui.values[0] + " - €" + ui.values[1]);
+                }
+            });
+            $("#amount").val("€" + $("#slider-range").slider("values", 0) + " - €" + $("#slider-range").slider("values", 1));
+
+        }); //]]>
+    </script>
+    <!-- //price range (top products) -->
 
 	{% endblock %}
