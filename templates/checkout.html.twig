@@ -102,14 +102,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<a href="{{path('removeProduct', {'id': item.product.idproduct}) }}" class="glyphicon glyphicon-remove-circle" style="color:black" >
 								</td>
 							</tr>
-							
+								{% endfor %}
 						
 							<tfoot>
 							<td colspan="3" class="text-right"> Total: 
 							</td>
 							<td>{{total}} €</td>
+							
 							</table>
-							{% endfor %}
+						
 
 							
 							
