@@ -179,7 +179,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="container-fluid">
             <div class="col-xs-8 agile-leftmk">
                 <h2>Envie de recevoir les dernières nouveautés?</h2>
-           
+            <br>
                 <form action="#" method="post">
                     <input type="email" placeholder="E-mail" name="email" required="">
                     <input type="submit" value="Subscribe">
@@ -404,6 +404,31 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         });
     </script>
     <!-- //smooth-scrolling-of-move-up -->
+
+    <!-- price range (top products) -->
+    <script src="js/jquery-ui.js"></script>
+    <script>
+        //<![CDATA[ 
+        $(window).load(function() {
+
+			type: "POST",
+            url: 'your_functions_address.php',
+            dataType: 'json'
+
+            $("#slider-range").slider({
+                range: true,
+                min: 0,
+                max: 100,
+                values: [0,100 ],
+                slide: function(event, ui) {
+                    $("#amount").val("€" + ui.values[0] + " - €" + ui.values[1]);
+                }
+            });
+            $("#amount").val("€" + $("#slider-range").slider("values", 0) + " - €" + $("#slider-range").slider("values", 1));
+
+        }); //]]>
+    </script>
+    <!-- //price range (top products) -->
 
     <!-- for bootstrap working -->
     <script src="js/bootstrap.js"></script>

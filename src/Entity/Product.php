@@ -190,7 +190,7 @@ class Product
         return $this->categoryIdcategory;
     }
 
-    public function setCategoryIdcategory(?Category $categoryIdcategory): self
+    public function setCategoryIdcategory(?string $categoryIdcategory): self
     {
         $this->categoryIdcategory = $categoryIdcategory;
 
