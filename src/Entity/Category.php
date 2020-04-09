@@ -78,7 +78,7 @@ class Category
         return $this->categoryIdcategory1;
     }
 
-    public function addCategoryIdcategory1(Category $categoryIdcategory1): self
+    public function addCategoryIdcategory1(string $categoryIdcategory1): self
     {
         if (!$this->categoryIdcategory1->contains($categoryIdcategory1)) {
             $this->categoryIdcategory1[] = $categoryIdcategory1;

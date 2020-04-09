@@ -16,9 +16,25 @@ class HomeController extends AbstractController {
             'articles'=>$articles,
            
         ]);
+    }
+    function indexFilterPrice(){
+        //On appelle la liste de tous les articles
+        $articles=$this->getDoctrine()->getRepository(Product::class)->findAll();
+        
+        return $this->render('index.html.twig', [
+            'articles'=>$articles,
+           
+        ]);
+    }
 
+    function indexFilterName($name){
+        //On appelle la liste de tous les articles
+        $articles=$this->getDoctrine()->getRepository(Product::class)->find($name);
         
-        
+        return $this->render('index.html.twig', [
+            'article'=>$articles,
+           
+        ]);
     }
 
     function login(){

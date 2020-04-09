@@ -2,6 +2,14 @@ index:
     path: /
     controller: App\Controller\HomeController::index
 
+indexFilterPrice:
+    path: /filterprice
+    controller: App\Controller\HomeController::indexFilterPrice
+
+indexFilterName:
+    path: /filtername={name}
+    controller: App\Controller\HomeController::indexFilterName
+
 register:
     path: /register
     controller: App\Controller\HomeController::register
@@ -63,6 +71,8 @@ history:
 details_product:
     path: /product{id}
     controller: App\Controller\ProductController::detailsbis
+
+
     
 
 

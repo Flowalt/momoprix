@@ -25,7 +25,7 @@
 				<div class="container">
 					<div class="carousel-caption">
 						<h3>GRANDES VARIETES DE
-							<span>PRODUIT</span>
+							<span>PRODUITS</span>
 						</h3>
 						
 					</div>
@@ -33,14 +33,7 @@
 			</div>
 			
 		</div>
-		<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-			<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-			<span class="sr-only">Previous</span>
-		</a>
-		<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-			<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-			<span class="sr-only">Next</span>
-		</a>
+	
 	</div>
 	<!-- //banner -->
 
@@ -60,10 +53,10 @@
 			<div class="side-bar col-md-3">
 				<div class="search-hotel">
 					<h3 class="agileits-sear-head">Recherche</h3>
-					<form action="#" method="post">
-						<input type="search" placeholder="Nom du produit" name="search" required="">
-						<input type="submit" value=" ">
-					</form>
+					
+						<input type="search" id="search" placeholder="Nom du produit" name="search" required="">
+						
+					
 				</div>
 				<!-- price range -->
 				<div class="range">
@@ -131,14 +124,14 @@
 			</div>
 			<!-- //product left -->
 			<!-- product right -->
-			<div class="agileinfo-ads-display col-md-9">
+			<div class="agileinfo-ads-display col-md-9" id="hide">
 			
 				<div class="wrapper">
 					<!-- section article  -->
 					
 					<div >
 						{% for article  in articles %}
-						<div class="col-md-4 product-men">
+						<div class="col-md-4 product-men" id="idd">
 							<div class="men-pro-item simpleCart_shelfItem">
 								<div class="men-thumb-item">
 									<img src="images/m1.jpg" alt="">
@@ -149,9 +142,9 @@
 									</div>
 									
 								</div>
-								<div class="item-info-product ">
+								<div class="item-info-product "  id="mydiv">
 									<h4>
-										<a href="single.html">{{article.name}} </a>
+										<a href="">{{article.name}} </a>
 									</h4>
 									<div class="info-product-price">
 										<span class="item_price">{{article.price}}€ </span>
@@ -185,29 +178,7 @@
 	</div>
 	<!-- //top products -->
 	
-	<!-- price range (top products) -->
-    <script src="js/jquery-ui.js"></script>
-    <script>
-        //<![CDATA[ 
-        $(window).load(function() {
+	
+	
 
-			type: "POST",
-            url: 'your_functions_address.php',
-            dataType: 'json'
-
-            $("#slider-range").slider({
-                range: true,
-                min: 0,
-                max: 100,
-                values: [0,100 ],
-                slide: function(event, ui) {
-                    $("#amount").val("€" + ui.values[0] + " - €" + ui.values[1]);
-                }
-            });
-            $("#amount").val("€" + $("#slider-range").slider("values", 0) + " - €" + $("#slider-range").slider("values", 1));
-
-        }); //]]>
-    </script>
-    <!-- //price range (top products) -->
-
-	{% endblock %}
+{% endblock %}
