@@ -3,7 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Product;
+use App\Repository\ProductRepository;
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class HomeController extends AbstractController {
@@ -17,24 +20,31 @@ class HomeController extends AbstractController {
            
         ]);
     }
-    function indexFilterPrice(){
-        //On appelle la liste de tous les articles
-        $articles=$this->getDoctrine()->getRepository(Product::class)->findAll();
+
+    //filtrer par prix
+    function indexFilterPrice(ProductRepository $productRepository){
+        
+        $article=$productRepository->findByPrice();
+        
+        
+       
         
         return $this->render('index.html.twig', [
-            'articles'=>$articles,
+            'articles'=>$article,
            
         ]);
     }
 
-    function indexFilterName($name){
-        //On appelle la liste de tous les articles
-        $articles=$this->getDoctrine()->getRepository(Product::class)->find($name);
-        
+    function indexFilterName(ProductRepository $productRepository){
+      
+        //filtrer par nom
+        $article = $productRepository->findByName();
+
         return $this->render('index.html.twig', [
-            'article'=>$articles,
+            'articles'=>$article,
            
         ]);
+        
     }
 
     function login(){

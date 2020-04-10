@@ -13,8 +13,33 @@ class ProductRepository extends ServiceEntityRepository
         parent::__construct($registry, Product::class);
     }
 
-    // ...
+   //filter par nom
+    public function findByName()
+    {
+        $name= $_POST['search'];
+        return $this->createQueryBuilder('j')
+            ->andWhere('j.name Like :name')
+            ->setParameter('name','%'. $name.'%')
+            ->getQuery()
+            ->getResult();
 
+    }
+
+    // filtrer par prix
+    public function findByPrice()
+    {
+        $low= $_POST['lowprice'];
+        $high=$_POST['highprice'];
+      
+        return $this->createQueryBuilder('j')
+            ->andWhere('j.price >= :low')
+            ->andWhere('j.price <= :high')
+            ->setParameter('low',$low)
+            ->setParameter('high',$high)
+            ->getQuery()
+            ->getResult();
+
+    }
     
 
 }

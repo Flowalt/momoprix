@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
@@ -57,6 +56,11 @@ class Category
     {
         return $this->idcategory;
     }
+    public function setIdcategory($cat): ?int
+    {
+        return $this->idcategory = $cat;
+    }
+
 
     public function getName(): ?string
     {
@@ -78,7 +82,7 @@ class Category
         return $this->categoryIdcategory1;
     }
 
-    public function addCategoryIdcategory1(string $categoryIdcategory1): self
+    public function addCategoryIdcategory1(?Category $categoryIdcategory1): self
     {
         if (!$this->categoryIdcategory1->contains($categoryIdcategory1)) {
             $this->categoryIdcategory1[] = $categoryIdcategory1;

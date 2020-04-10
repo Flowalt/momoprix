@@ -7,12 +7,16 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
+
+
+
 /**
  * Product
  *
  * @ORM\Table(name="product", indexes={@ORM\Index(name="fk_product_category_idx", columns={"category_idcategory"})})
  * 
  * @ORM\Entity(repositoryClass="App\Repository\ProductRepository")
+ * @ORM\Entity(repositoryClass="App\Entity\SearchProductRepository")
  */
 class Product 
 {
@@ -51,7 +55,7 @@ class Product
      *
      * @ORM\Column(name="date_of_entry", type="datetime", nullable=true, options={"default"="NULL"})
      */
-    private $dateOfEntry = 'NULL';
+    private $dateOfEntry;
 
     /**
      * @var int
@@ -67,6 +71,9 @@ class Product
      */
     private $url = 'NULL';
 
+
+     
+  
     /**
      * @var \Category
      *
@@ -106,6 +113,8 @@ class Product
     {
         $this->customerIdcustomer = new \Doctrine\Common\Collections\ArrayCollection();
         $this->orderIdorder = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->dateOfEntry= new \DateTime();
+ 
     }
 
     public function getIdproduct(): ?int
@@ -185,12 +194,17 @@ class Product
         return $this;
     }
 
-    public function getCategoryIdcategory(): ?Category
+    public function setidcategory(?int $id): ?int{
+
+        return $this->categoryIdcategory=$id;
+    }
+
+    public function getCategoryIdcategory()
     {
         return $this->categoryIdcategory;
     }
 
-    public function setCategoryIdcategory(?string $categoryIdcategory): self
+    public function setCategoryIdcategory(?Category $categoryIdcategory): self
     {
         $this->categoryIdcategory = $categoryIdcategory;
 

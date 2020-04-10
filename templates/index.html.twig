@@ -2,46 +2,13 @@
 
 {% block Copter %}
 
-	<!-- banner -->
-	<div id="myCarousel" class="carousel slide" data-ride="carousel">
-		<!-- Indicators-->
-		<ol class="carousel-indicators">
-			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-			<li data-target="#myCarousel" data-slide-to="1" class=""></li>
-			
-		</ol>
-		<div class="carousel-inner" role="listbox">
-			<div class="item active">
-				<div class="container">
-					<div class="carousel-caption">
-						<h3>BIENVENUE
-							<span>SUR NOTRE SITE</span>
-						</h3>
-				
-					</div>
-				</div>
-			</div>
-			<div class="item item2">
-				<div class="container">
-					<div class="carousel-caption">
-						<h3>GRANDES VARIETES DE
-							<span>PRODUITS</span>
-						</h3>
-						
-					</div>
-				</div>
-			</div>
-			
-		</div>
-	
-	</div>
-	<!-- //banner -->
+
 
 	<!-- top Products -->
 	<div class="ads-grid">
 		<div class="container">
 			<!-- tittle heading -->
-			<h3 class="tittle-w3l">Notre sélection de produits
+			<h3 class="tittle-w3l">Nos produits
 				<span class="heading-style">
 					<i></i>
 					<i></i>
@@ -51,24 +18,29 @@
 			<!-- //tittle heading -->
 			<!-- product left -->
 			<div class="side-bar col-md-3">
-				<div class="search-hotel">
-					<h3 class="agileits-sear-head">Recherche</h3>
-					
-						<input type="search" id="search" placeholder="Nom du produit" name="search" required="">
-						
-					
-				</div>
-				<!-- price range -->
-				<div class="range">
-					<h3 class="agileits-sear-head">Price range</h3>
-					<ul class="dropdown-menu6">
-						<li>
 
-							<div id="slider-range"></div>
-							<input type="text" id="amount" style="border: 0; color: #ffffff; font-weight: normal;" />
-						</li>
-					</ul>
-				</div>
+			<div class="search-hotel">
+			<form action="{{path('indexFilterName')}}" method="post">
+					<h3 class="agileits-sear-head">Recherche</h3>
+			     	<input type="search" id="search" placeholder="Nom du produit" name="search" required="">
+					 <button type="submit" class="btn btn-default" aria-label="Left Align">
+							<span class="fa fa-search" aria-hidden="true"> </span>
+						</button>
+			</form>	
+		    </div>
+			
+				<!-- price range -->
+			<div class="range">
+					<h3 class="agileits-sear-head">Price range</h3>
+				<form action="{{path('indexFilterPrice')}}" method="post">
+					
+			     	<input type="text" name="lowprice" required="" size="2">€- &nbsp;<input type="text" name="highprice" required="" size="2">€
+					 &nbsp;<button type="submit" class="btn btn-default" aria-label="Left Align">
+							<span class="fa fa-search" aria-hidden="true"> </span>
+						   </button>
+					
+			</form>	
+			</div>
 				<!-- //price range -->
 			
 				<!-- cuisine -->
@@ -118,9 +90,15 @@
 					</ul>
 				</div>
 				<!-- //cuisine -->
-				<!-- deals -->
-			
-				<!-- //deals -->
+
+				<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+					<form action="{{path('index')}}" method="post">
+						<fieldset>
+						<input type="submit" name="submit" value="Réinitialser" class="button" />
+						 </fieldset>
+						</form>
+				</div>
+				
 			</div>
 			<!-- //product left -->
 			<!-- product right -->
@@ -134,7 +112,7 @@
 						<div class="col-md-4 product-men" id="idd">
 							<div class="men-pro-item simpleCart_shelfItem">
 								<div class="men-thumb-item">
-									<img src="images/m1.jpg" alt="">
+									<img src="images/{{article.url}}" alt="">
 									<div class="men-cart-pro">
 										<div class="inner-men-cart-pro">
 											<a href="{{path('details_product',{'id':article.idproduct})}}" class="link-product-add-cart">Quick View</a>

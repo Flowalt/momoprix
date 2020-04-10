@@ -7,7 +7,7 @@ indexFilterPrice:
     controller: App\Controller\HomeController::indexFilterPrice
 
 indexFilterName:
-    path: /filtername={name}
+    path: /filterbyname
     controller: App\Controller\HomeController::indexFilterName
 
 register:
