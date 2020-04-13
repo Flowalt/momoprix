@@ -26,13 +26,10 @@ registerPost:
 
 login:
     path: /login
-    controller: App\Controller\HomeController::login
-    methods: get
+    controller: App\Security\SecurityController::login
+  
 
-loginPost:
-    path: /login
-    controller: App\Controller\UserController::loginPost
-    methods: post
+
 
 product:
     path: /product/{id}

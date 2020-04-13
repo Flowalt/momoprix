@@ -29,26 +29,31 @@ class HomeController extends AbstractController {
     }
 
     //filtrer par prix
-    function indexFilterPrice(ProductRepository $productRepository){
+    function indexFilterPrice(ProductRepository $productRepository,RepositoryCategoryRepository $cat){
         
         $article=$productRepository->findByPrice();
+        $category=$cat->findAll();
         
         
        
         
         return $this->render('index.html.twig', [
             'articles'=>$article,
+            'category'=>$category
+            
            
         ]);
     }
 
-    function indexFilterName(ProductRepository $productRepository){
+    function indexFilterName(ProductRepository $productRepository,RepositoryCategoryRepository $cat){
       
         //filtrer par nom
         $article = $productRepository->findByName();
+        $category=$cat->findAll();
 
         return $this->render('index.html.twig', [
             'articles'=>$article,
+            'category'=>$category
            
         ]);
         
