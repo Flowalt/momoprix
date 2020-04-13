@@ -87,7 +87,7 @@ class UserController extends AbstractController {
                     $entityManager->persist($user);
                     $entityManager->flush();
                     // dd($user);
-                    return $this->render('index.html.twig');
+                    return $this->render('login.html.twig');
                 }else{
                     echo("Merci de remplir tous les champs");
                     return $this->render('signup.html.twig');

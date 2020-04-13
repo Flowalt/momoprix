@@ -15,9 +15,7 @@ class HomeController extends AbstractController {
         ]);
     }
 
-    function login(){
-        return $this->render('login.html.twig');
-    }
+   
 
     function register(){
         return $this->render('signup.html.twig');
