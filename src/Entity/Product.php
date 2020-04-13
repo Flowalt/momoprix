@@ -15,8 +15,9 @@ use Symfony\Component\Security\Core\User\UserInterface;
  *
  * @ORM\Table(name="product", indexes={@ORM\Index(name="fk_product_category_idx", columns={"category_idcategory"})})
  * 
+ * 
  * @ORM\Entity(repositoryClass="App\Repository\ProductRepository")
- * @ORM\Entity(repositoryClass="App\Entity\SearchProductRepository")
+ *
  */
 class Product 
 {

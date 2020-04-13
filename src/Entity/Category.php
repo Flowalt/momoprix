@@ -15,10 +15,11 @@ class Category
 {
     /**
      * @var int
-     *
+    
      * @ORM\Column(name="idcategory", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     * 
      */
     private $idcategory;
 

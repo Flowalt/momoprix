@@ -34,7 +34,7 @@
 					<h3 class="agileits-sear-head">Price range</h3>
 				<form action="{{path('indexFilterPrice')}}" method="post">
 					
-			     	<input type="text" name="lowprice" required="" size="2">€- &nbsp;<input type="text" name="highprice" required="" size="2">€
+			     	<input type="text" name="lowprice" required="" size="2">€ &nbsp;- &nbsp;<input type="text" name="highprice" required="" size="2">€
 					 &nbsp;<button type="submit" class="btn btn-default" aria-label="Left Align">
 							<span class="fa fa-search" aria-hidden="true"> </span>
 						   </button>
@@ -45,48 +45,18 @@
 			
 				<!-- cuisine -->
 				<div class="left-side">
-					<h3 class="agileits-sear-head">Cuisine</h3>
+				<form action="{{path('indexFilterCategory')}}" method="post">
+					<h3 class="agileits-sear-head">Catégorie</h3><button type="submit" class="btn btn-default" aria-label="Left Align">
+							<span class="fa fa-search" aria-hidden="true"> </span>
+						   </button>
+				</form>
 					<ul>
+					{% for cat  in category %}
 						<li>
-							<input type="checkbox" class="checked">
-							<span class="span">South American</span>
+							<input type="checkbox" name="checkbox[]" class="checked" value="{{cat.idcategory}}">
+							<span class="span">{{ cat.name}}</span>
 						</li>
-						<li>
-							<input type="checkbox" class="checked">
-							<span class="span">French</span>
-						</li>
-						<li>
-							<input type="checkbox" class="checked">
-							<span class="span">Greek</span>
-						</li>
-						<li>
-							<input type="checkbox" class="checked">
-							<span class="span">Chinese</span>
-						</li>
-						<li>
-							<input type="checkbox" class="checked">
-							<span class="span">Japanese</span>
-						</li>
-						<li>
-							<input type="checkbox" class="checked">
-							<span class="span">Italian</span>
-						</li>
-						<li>
-							<input type="checkbox" class="checked">
-							<span class="span">Mexican</span>
-						</li>
-						<li>
-							<input type="checkbox" class="checked">
-							<span class="span">Thai</span>
-						</li>
-						<li>
-							<input type="checkbox" class="checked">
-							<span class="span">Indian</span>
-						</li>
-						<li>
-							<input type="checkbox" class="checked">
-							<span class="span"> Spanish </span>
-						</li>
+					{% endfor %}
 					</ul>
 				</div>
 				<!-- //cuisine -->

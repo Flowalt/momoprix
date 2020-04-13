@@ -13,6 +13,20 @@ class ProductRepository extends ServiceEntityRepository
         parent::__construct($registry, Product::class);
     }
 
+
+    //tout afficher
+
+    public function findAllArticle()
+    {
+       
+        return $this->createQueryBuilder('j')
+           
+            ->getQuery()
+            ->getResult();
+
+    }
+    
+
    //filter par nom
     public function findByName()
     {
@@ -41,5 +55,19 @@ class ProductRepository extends ServiceEntityRepository
 
     }
     
+     //filter par catégories
+     public function findByCategory()
+     {
+        echo("ok");
+       
+            
+       $name=$_POST['checkbox'];
+       echo($name);
+            
+          
+        
+     }
 
 }
+     
+     
