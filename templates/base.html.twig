@@ -69,14 +69,33 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <li>
                         <span class="fa fa-phone" aria-hidden="true"></span> 09 71 37 80 93
                     </li>
+                   
+
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                     <li>
+                        <a href="/logout" data-toggle="modal" >
+                            <span class="fa fa-unlock-alt" aria-hidden="true"></span> Déconnexion </a>
+                    </li>
+                    {% else %}
+                     <li>
                         <a href="/login" data-toggle="modal" >
                             <span class="fa fa-unlock-alt" aria-hidden="true"></span> Connexion </a>
                     </li>
-                    <li>
+
+                    {% endif %}
+                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                     <li>
+                        <a href="{{path('profil')}}" data-toggle="modal" >
+                            <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Profil </a>
+                    </li>
+                   
+                    {% else %}
+                     <li>
                         <a href="/register" data-toggle="modal" >
                             <span class="fa fa-pencil-square-o" aria-hidden="true"></span> Inscription </a>
                     </li>
+                   
+                    {% endif %}
                 </ul>
                 <!-- //header lists -->
                 <!-- search -->

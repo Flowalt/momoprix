@@ -2,11 +2,15 @@
 
 namespace App\Controller;
 
+use App\Repository\CategoryRepository as RepositoryCategoryRepository;
+use App\Repository\ProductRepository;
 use App\Entity\Customer;
+use App\Repository\AddressRepository;
+use App\Repository\CustomerRepository;
 use DateTime;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 use Symfony\Component\HttpFoundation\Request;
 //class permets l'utlisation du hashage du password 
@@ -18,9 +22,17 @@ use PhpParser\Builder\Interface_;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
+
 class UserController extends AbstractController {
 
-    
+    private $session;
+
+    public function __construct(SessionInterface $session)
+    {
+        $this->session = $session;
+    }
+
+
 
     function CheckEmail():int{
         $db = mysqli_connect('localhost', 'root', '', 'intermarcher');
@@ -34,7 +46,7 @@ class UserController extends AbstractController {
         }
     }
 
-    function registerPost(Request $request,UserPasswordEncoderInterface $passwordEncoder){
+    function registerPost(Request $request,UserPasswordEncoderInterface $passwordEncoder, ProductRepository $productRepository, RepositoryCategoryRepository $cat){
         //Data de retour dans la view
         $return = ['error'=> false, 'message'=>'' ];
 
@@ -50,13 +62,7 @@ class UserController extends AbstractController {
         
         //Password Match
     
-        /*if($_POST){
-        if(($_POST['password']!= $_POST['repassword'])){
-            echo("Oops! Password did not match! Try again.");
-        }else{
-            $int++;
-        }  
-    }*/
+  
 
     if($int ==1){
 
@@ -84,16 +90,32 @@ class UserController extends AbstractController {
                     $pass= ($_POST['password']);
                     $passworEncoded = $passwordEncoder->encodePassword($user, $pass);
                     $user -> setPassword($passworEncoded);
+                    $this->session->set('attribute-name', 'attribute-value');
                     $entityManager->persist($user);
                     $entityManager->flush();
                     // dd($user);
-                    return $this->render('index.html.twig');
-                }else{
-                    echo("Merci de remplir tous les champs");
-                    return $this->render('signup.html.twig');
-                }
-            
+                    $articles=$productRepository->findAllArticle();
+                    $category=$cat->findAll();
+                    
+                    
+                    return $this->render('index.html.twig', [
+                        'articles'=>$articles,
+                        'category'=>$category
+                       
+                    ]);
+                    
+        
+        
+        
+                    
+                    
+                    
+        }else{
+                echo("Merci de remplir tous les champs");
+                return $this->render('signup.html.twig');
             }
+            
+        }
         
         }
                   
@@ -103,42 +125,60 @@ class UserController extends AbstractController {
     }          
         
     }
+ 
+    function Edit(AddressRepository $adressRepository){
+        $entityManager = $this->getDoctrine()->getManager();
+        $customer= new Customer();
+
+       
+
+        $customer ->setLastname($_POST["Nom"]);
+        $customer ->setFirstname($_POST["Prenom"]);
+        $customer ->setEmail($_POST["Email"]);
+        $customer -> setDateOfBirth($_POST["Date"]);
+
+        $entityManager->persist($customer);
+        $entityManager->flush();
+        
+        $address =  $adressRepository->dysplayAddressLivraisonByCustomerId(2);
+        $addressFact =  $adressRepository->dysplayAddressFacturationByCustomerId(2);
+
+        
+        return $this->render('profile.html.twig',[
+
+            'adressLivraison'=> $address,
+            'adressFacturation'=> $addressFact
+        ]);
+        
 
 
+    }
 
-    /*public function loginPost(Request $request,UserPasswordEncoderInterface $passwordEncoder)
-    {
-        if($_POST){
+    function profile(AddressRepository $adressRepository, ProductRepository $productRepository, RepositoryCategoryRepository $cat)
+    {   
+        
+        dd($_SESSION);
+        if(empty($_SESSION['_sf2_attributes']) ){ //if login in session is not set
+           // require_once('App/controller/HomeController.php'); 
+            $oHome =  new HomeController();
             
-            $user = new Customer();
-            $pass= ($_POST['password']);
-            $email= ($_POST['Email']);
+            $oHome->index($productRepository,$cat);
+        }else{
+
+        $customer = new Customer();
+        
+        $address =  $adressRepository->dysplayAddressLivraisonByCustomerId($customer->getIdcustomer());
+        $addressFact =  $adressRepository->dysplayAddressFacturationByCustomerId($customer->getIdcustomer());
         
         
-            $passworEncoded = $passwordEncoder->isPasswordValid($user, $pass);
-            echo($passworEncoded." , " .$email);
-            $conn = mysqli_connect("localhost","root","","intermarcher");
-            $result = mysqli_query($conn,"SELECT * FROM customer WHERE email='".$email."'and password='".$passworEncoded."' ");
-            $count  = mysqli_num_rows($result);
-            
-            if($count==0) {
-                $message = "Invalid Username or Password!";
-                echo($message);
-                return $this->render('login.html.twig');
-            } else {
-                $message = "You are successfully authenticated!";
-                echo($message);
-                return $this->render('index.html.twig');
-            }
-        
+        return $this->render('profile.html.twig',[
+
+            'adressLivraison'=> $address,
+            'adressFacturation'=> $addressFact
+        ]);
         }
-    }*/
+        
 
-    
-    
-    function profile()
-    {
-    
     }
     
 }

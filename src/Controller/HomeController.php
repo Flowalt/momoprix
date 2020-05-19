@@ -16,6 +16,7 @@ class HomeController extends AbstractController {
     function index(ProductRepository $productRepository, RepositoryCategoryRepository $cat){
         //On appelle la liste de tous les articles
         //$articles=$this->getDoctrine()->getRepository(Product::class)->findAll();
+        //$category=$this->getDoctrine()->getRepository(Product::class)->findAll();
         
         $articles=$productRepository->findAllArticle();
         $category=$cat->findAll();
@@ -28,36 +29,7 @@ class HomeController extends AbstractController {
         ]);
     }
 
-    //filtrer par prix
-    function indexFilterPrice(ProductRepository $productRepository,RepositoryCategoryRepository $cat){
-        
-        $article=$productRepository->findByPrice();
-        $category=$cat->findAll();
-        
-        
-       
-        
-        return $this->render('index.html.twig', [
-            'articles'=>$article,
-            'category'=>$category
-            
-           
-        ]);
-    }
-
-    function indexFilterName(ProductRepository $productRepository,RepositoryCategoryRepository $cat){
-      
-        //filtrer par nom
-        $article = $productRepository->findByName();
-        $category=$cat->findAll();
-
-        return $this->render('index.html.twig', [
-            'articles'=>$article,
-            'category'=>$category
-           
-        ]);
-        
-    }
+    
 
     //filtre de catégories
     function indexFilterCategory(ProductRepository $productRepository,RepositoryCategoryRepository $cat){

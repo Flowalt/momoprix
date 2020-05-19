@@ -1,0 +1,60 @@
+{% extends "base.html.twig" %} 
+ 
+
+ {% block Copter %}
+
+<body>
+
+  <div class="checkout-left" id ="addAF">
+				<div class="address_form_agile">
+					<h4>Add a new Details</h4>
+					<form action="payment.html" method="post" class="creditly-card-form agileinfo_form">
+						<div class="creditly-wrapper wthree, w3_agileits_wrapper">
+							<div class="information-wrapper">
+								<div class="first-row">
+									<div class="controls">
+										<input class="billing-address-name" type="text" name="adresse" placeholder="Adresse" required="">
+									</div>
+									<div class="w3_agileits_card_number_grids">
+										<div class="w3_agileits_card_number_grid_left">
+											<div class="controls">
+												<input type="text" placeholder="Code postale" name="cp" required="">
+											</div>
+										</div>
+										<div class="w3_agileits_card_number_grid_right">
+											<div class="controls">
+												<input type="text" placeholder="Ville" name="ville" required="">
+											</div>
+										</div>
+										<div class="clear"> </div>
+									</div>
+									<div class="controls">
+										<input type="text" placeholder="Indoors" name="indoors" >
+									</div>
+                                    <div class="controls">
+										<input type="text" placeholder="Digicode" name="digicode" >
+									</div>
+                                    <div class="controls">
+										<input type="text" placeholder="Etage" name="etage" >
+									</div>
+
+                                    <div>
+                                         <label for="ascenseur"> Ascenseur</label>
+										<input type="checkbox" name="ascenseur" id="ascenceur" required="" >
+                                        
+									</div>
+									
+								</div>
+								<button class="submit check_out">Ajouter cette adresse</button>
+							</div>
+						</div>
+					</form>
+				
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+
+</body>
+
+
+     {% endblock %}

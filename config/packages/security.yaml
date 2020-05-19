@@ -26,6 +26,9 @@ security:
                 login_path: login
                 check_path: login
                 provider: my_provider
+            
+            logout:
+                path: logout
                 
 
             # activate different ways to authenticate
@@ -39,5 +42,6 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
          - { path: ^/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+         - { path: ^/profil, roles: IS_AUTHENTICATED_ANONYMOUSLY }
 
 

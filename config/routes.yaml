@@ -4,11 +4,11 @@ index:
 
 indexFilterPrice:
     path: /filterprice
-    controller: App\Controller\HomeController::indexFilterPrice
+    controller: App\Controller\ProductController::indexFilterPrice
 
 indexFilterName:
     path: /filterbyname
-    controller: App\Controller\HomeController::indexFilterName
+    controller: App\Controller\ProductController::indexFilterName
 
 indexFilterCategory:
     path: /filterbyCategory
@@ -28,6 +28,9 @@ login:
     path: /login
     controller: App\Security\SecurityController::login
   
+logout:
+    path: /logout
+    methods: get
 
 
 
@@ -51,10 +54,18 @@ removeProduct:
     path: /panier/remove/{id}
     controller: App\Controller\CartController::RemoveProduct
     
+editProfil:
+    path: /profil/edit
+    controller: App\Controller\UserController::Edit
 
 profil:
-    path: /profil/{id}
-    controller: App\Controller\UserController::profil
+    path: /profil
+    controller: App\Controller\UserController::profile
+    
+adress:
+    path: /addAdress
+    controller: App\Controller\AdressController::addAddressDelivery
+   
 
 payment:
     path: /payment

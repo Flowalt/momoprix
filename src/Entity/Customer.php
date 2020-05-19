@@ -102,6 +102,13 @@ class Customer implements UserInterface
         return $this->idcustomer;
     }
 
+    public function setIdcustomer(int $id): self
+    {
+        $this->idcustomer = $id;
+
+        return $this;
+    }
+
     public function getFirstname(): ?string
     {
         return $this->firstname;
