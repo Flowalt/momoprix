@@ -62,19 +62,25 @@ profil:
     path: /profil
     controller: App\Controller\UserController::profile
     
-adress:
-    path: /addAdress
+adressDelivery:
+    path: /addAdressDelivery
     controller: App\Controller\AdressController::addAddressDelivery
-   
+
+adressFacturation:
+    path: /addAdressFacturation
+    controller: App\Controller\AdressController::addAddressFacturation
 
 payment:
     path: /payment
     controller: App\Controller\OrderController::payment
 
-order:
+cart:
     path: /panier
     controller: App\Controller\CartController::panier
     
+addFavoris:
+    path: /addFavoris/{id}
+    controller: App\Controller\FavorisController::addFavoris
 
 history:
     path: /history

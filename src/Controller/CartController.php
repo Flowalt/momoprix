@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Product;
+use App\Repository\AddressRepository;
 use App\Repository\ProductRepository as RepositoryProductRepository;
 use AppBundle\Repository\ProductRepository;
 use ProductRepository as GlobalProductRepository;
@@ -43,13 +44,15 @@ class CartController extends AbstractController {
         }
 
         $session->set('panier', $panier);
-        return $this->redirectToRoute ('order');
+        return $this->redirectToRoute ('cart');
     }
 
     
 
-    public function panier(SessionInterface $session, RepositoryProductRepository $productRepository)
+    public function panier(SessionInterface $session, RepositoryProductRepository $productRepository, AddressRepository $addressRepository )
     {
+
+
     $panier = $session->get('panier',[]);
 
 
@@ -70,13 +73,18 @@ class CartController extends AbstractController {
         }
     }
 
+    $customer = $this -> getUser();
+    $address =  $addressRepository->dysplayAddressLivraisonByCustomerId($customer->getIdcustomer());
+    $addressFact = $addressRepository->dysplayAddressFacturationByCustomerId($customer->getIdcustomer());
+
     return $this-> render('checkout.html.twig', [
         'items' => $panierWithData,
-        'total' => $total
-
+        'total' => $total,
+        'adressLivraison' => $address,
+        'adressFacturation' => $addressFact
     ]);
     
-        return $this->redirectToRoute('order');
+    //return $this->redirectToRoute('cart');
         
     
 
@@ -91,7 +99,7 @@ class CartController extends AbstractController {
         }
          
          $session-> set('panier', $panier);
-         return $this->redirectToRoute ('order');
+         return $this->redirectToRoute ('cart');
       }
 
       public function deleteQuantity($id,SessionInterface $session){
@@ -105,7 +113,7 @@ class CartController extends AbstractController {
 
          
          $session-> set('panier', $panier);
-         return $this->redirectToRoute ('order');
+         return $this->redirectToRoute ('cart');
       }
 
     

@@ -81,7 +81,7 @@ class Address
     /**
      * @var \Customer
      *
-     * @ORM\ManyToOne(targetEntity="Customer")
+     * @ORM\ManyToOne(targetEntity="Customer",cascade={"persist"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="customer_idcustomer", referencedColumnName="idcustomer")
      * })

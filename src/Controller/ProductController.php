@@ -24,11 +24,9 @@ class ProductController extends AbstractController {
 
     function detailsbis($id){
         
+        //$this->session->set('id', );
         
         $article=$this->getDoctrine()->getRepository(Product::class)->find($id);
-        
-        
-        
 
         return $this->render('details.html.twig',[
             'article'=> $article

@@ -3,6 +3,7 @@
 namespace App\Controller;
 use App\Entity\Address;
 use App\Entity\Customer;
+use Symfony\Component\Security\Core\Security;
 
 
 
@@ -30,18 +31,52 @@ class AdressController extends AbstractController {
       
        
         $address = new Address();
-        $customer= new Customer();
+        $customer= $this->getUser(); 
         
-        $id= $_POST['Id'];
-
+        
+        
         $address-> setAddress($_POST['adresse']);
         $address -> setCity($_POST['ville']);
         $address-> setCp($_POST['cp']);
         $address->setType("livraison");
-        $address->setElevator($_POST['ascenseur']);
-        $address->setCustomerIdcustomer($customer->setIdcustomer($id));
+        if($_POST['my-radio'] == 'oui')
+        $address->setElevator(true);
+        if($_POST['my-radio'] == 'non')
+        $address->setElevator(false);
+      
+        $address->setCustomerIdcustomer($customer);
        
         $entityManager->persist($address);
         $entityManager->flush();
+
+        return $this->redirectToRoute('profil');
+    }
+
+    public function addAddressFacturation(){
+
+        $entityManager = $this->getDoctrine()->getManager();
+
+      
+       
+        $address = new Address();
+        $customer= $this->getUser(); 
+        
+        
+        
+        $address-> setAddress($_POST['adresse']);
+        $address -> setCity($_POST['ville']);
+        $address-> setCp($_POST['cp']);
+        $address->setType("facturation");
+        if($_POST['my-radio'] == 'oui')
+        $address->setElevator(true);
+        if($_POST['my-radio'] == 'non')
+        $address->setElevator(false);
+      
+        $address->setCustomerIdcustomer($customer);
+       
+        $entityManager->persist($address);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('profil');
     }
 }

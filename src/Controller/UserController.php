@@ -11,6 +11,7 @@ use DateTime;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\Security\Core\Security;
 
 use Symfony\Component\HttpFoundation\Request;
 //class permets l'utlisation du hashage du password 
@@ -90,9 +91,10 @@ class UserController extends AbstractController {
                     $pass= ($_POST['password']);
                     $passworEncoded = $passwordEncoder->encodePassword($user, $pass);
                     $user -> setPassword($passworEncoded);
-                    $this->session->set('attribute-name', 'attribute-value');
+                    
                     $entityManager->persist($user);
                     $entityManager->flush();
+                    $this->session->set('id', $user->getIdcustomer());
                     // dd($user);
                     $articles=$productRepository->findAllArticle();
                     $category=$cat->findAll();
@@ -156,16 +158,20 @@ class UserController extends AbstractController {
 
     function profile(AddressRepository $adressRepository, ProductRepository $productRepository, RepositoryCategoryRepository $cat)
     {   
-        
-        dd($_SESSION);
+        //dd($_SESSION);
+       //$id = $_SESSION['_sf2_attributes']['id'];
+       $customer= $this->getUser(); 
+     
+  
+
         if(empty($_SESSION['_sf2_attributes']) ){ //if login in session is not set
            // require_once('App/controller/HomeController.php'); 
-            $oHome =  new HomeController();
-            
-            $oHome->index($productRepository,$cat);
+           return $this->redirectToRoute('index');
         }else{
 
-        $customer = new Customer();
+        
+
+        
         
         $address =  $adressRepository->dysplayAddressLivraisonByCustomerId($customer->getIdcustomer());
         $addressFact =  $adressRepository->dysplayAddressFacturationByCustomerId($customer->getIdcustomer());

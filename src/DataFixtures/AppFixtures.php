@@ -14,15 +14,19 @@ class AppFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
-        /*
-         // create 20 catégories! Bam!
+       
+        
+
+          //create 20 catégories! Bam!
          for ($i = 0; $i < 20; $i++) {
             $cat= new Category();
             $cat->setIdcategory($i);
             $cat->setName('cat'.$i);
             $manager->persist($cat);
+            
+            
         }
-        */
+        
         // create 20 products! Bam!
         for ($i = 0; $i < 20; $i++) {
             $product = new Product();
@@ -33,8 +37,8 @@ class AppFixtures extends Fixture
             $product-> setUrl('k3.jpg');
             $product->setidcategory($i);
             $manager->persist($product);
+            
         }
-
         $manager->flush();
     }       
 

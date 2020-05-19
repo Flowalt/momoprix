@@ -34,7 +34,7 @@
                         <div class="styled-input agile-styled-input-top">
                                Email: <input type="text" value="{{app.user.email}}" name="Email" required="">
                         </div>
-
+						<br>
 						<div class="styled-input agile-styled-input-top">
                                Date de naissance: <input type="date" value="{{app.user.dateOfBirth}}" name="Date" required="">
                         </div>
@@ -49,19 +49,38 @@
 						</fieldset>
 					</form>
 				</div>
-					<section>
-					 <br>
-					 <br>
+
+			<br>
+			<div class="container">
+        		<div class="row">
+           			<div class="col-md-6 col-sm-3">
+					   
 						<h3 class="agileinfo_sign">Adresse de Livraison</h3>
                         {% for address  in adressLivraison %}
                         <p> {{address.address}}</p>
                         {% endfor %}
-						<input  id ="addLiv"type="submit" name="submit" value="Ajouter" class="button" />
-						
-					</form>
-					<div class="address_form_agile" id="AddAF">
+					
+					<br>
+					<input  id ="addLiv"type="submit" name="submit" value="Ajouter adresse de livraison" class="button" styled-input="text-aign:center" />
+					</div>
+                	<div class="col-md-6 col-sm-3">
+					
+					<h3 class="agileinfo_sign">Adresse de Facturation</h3>
+                        {% for address  in adressFacturation %}
+                        <p> {{address.address}}</p>
+                        {% endfor %}
+						<br>
+						<input  id ="addFac"type="submit" name="submit" value="Ajouter adresse de livraison" class="button" styled-input="text-aign:center" />
+
+		        </div>
+			</div>
+
+
+		</div>
+		
+				<div class="address_form_agile" id="AddAD">
 					<h4>Add a new Details</h4>
-					<form action="/addAdress" method="post" class="creditly-card-form agileinfo_form">
+					<form action="/addAdressDelivery" method="post" class="creditly-card-form agileinfo_form">
 						<div class="creditly-wrapper wthree, w3_agileits_wrapper">
 							<div class="information-wrapper">
 								<div class="first-row">
@@ -96,14 +115,15 @@
                                     <div class="controls">
 										<input type="text" placeholder="Etage" name="etage" >
 									</div>
-
+	                               
                                     <div>
-                                         <label for="ascenseur"> Ascenseur</label>
-										<input type="checkbox" name="ascenseur" id="ascenceur" required="" >
-                                        
+                                         <label >Ascenseur</label>
+										<input type="radio" name="my-radio" value="oui"> oui
+										<input type="radio" name="my-radio" value="non"> non
+										 
 									</div>
-									
-								</div>
+									 </div>
+							
 								<div class="snipcart-details agileinfo_single_right_details">
 								<form action="/addAdress" method="post">
 								<input type="submit" name="submit" value="Ajouter Adresse" class="button" />
@@ -115,22 +135,63 @@
 				
 				</div>
 
-					</section>
-					<section>
-					 <br>
-					 <br>
-						<h3 class="agileinfo_sign">Adresse de Facturation</h3>
-                        {% for address  in adressFacturation %}
-                        <p> {{address.address}}</p>
-                        {% endfor %}
-					</section>
-				<br>
+				<div class="address_form_agile" id="AddAF">
+					<h4>Add a new Details</h4>
+					<form action="/addAdressFacturation" method="post" class="creditly-card-form agileinfo_form">
+						<div class="creditly-wrapper wthree, w3_agileits_wrapper">
+							<div class="information-wrapper">
+								<div class="first-row">
+								    <div class="w3_agileits_card_number_grid_left" hidden>
+											<div class="controls" >
+												<input type="text"  name="Id" value="{{app.user.idcustomer}}" required="">
+											</div>
+										</div>
+									<div class="controls">
+										<input class="billing-address-name" type="text" name="adresse" placeholder="Adresse" required="">
+									</div>
+									<div class="w3_agileits_card_number_grids">
+										
+										<div class="w3_agileits_card_number_grid_left">
+											<div class="controls">
+												<input type="text" placeholder="Code postale" name="cp" required="">
+											</div>
+										</div>
+										<div class="w3_agileits_card_number_grid_right">
+											<div class="controls">
+												<input type="text" placeholder="Ville" name="ville" required="">
+											</div>
+										</div>
+										<div class="clear"> </div>
+									</div>
+									<div class="controls">
+										<input type="text" placeholder="Indoors" name="indoors" >
+									</div>
+                                    <div class="controls">
+										<input type="text" placeholder="Digicode" name="digicode" >
+									</div>
+                                    <div class="controls">
+										<input type="text" placeholder="Etage" name="etage" >
+									</div>
+	                               
+                                    <div>
+                                         <label >Ascenseur</label>
+										<input type="radio" name="my-radio" value="oui"> oui
+										<input type="radio" name="my-radio" value="non"> non
+										 
+									</div>
+									 </div>
+							
+								<div class="snipcart-details agileinfo_single_right_details">
+								<form action="/addAdress" method="post">
+								<input type="submit" name="submit" value="Ajouter Adresse" class="button" />
+								</form>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
 
-				
-				
-				<div class="clearfix"> </div>
-				
-			</div>
+		</div>
 
 				
 
@@ -142,9 +203,15 @@
 <script>
 $( document ).ready(function() {
 
+$("#AddAD").hide();
 $("#AddAF").hide();
 
 $("#addLiv").click(function() {
+$("#AddAD").show();
+  event.preventDefault();
+});	
+
+$("#addFac").click(function() {
 $("#AddAF").show();
   event.preventDefault();
 });	
