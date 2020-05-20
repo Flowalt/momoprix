@@ -82,6 +82,10 @@ addFavoris:
     path: /addFavoris/{id}
     controller: App\Controller\FavorisController::addFavoris
 
+Favoris:
+    path: /favoris
+    controller: App\Controller\FavorisController::displayFavoris
+
 history:
     path: /history
     controller: App\Controller\OrderController::history

@@ -27,15 +27,6 @@ public function findOneByIdJoinedToAddress()
     return $query->getOneOrNullResult();
 }
 
-public function findByEmail()
-    {
-        return $this->createQueryBuilder('j')
-            ->select('j.idcustomer')
-            ->andWhere('j.email Like :email')
-            ->setParameter('email','azerty@az.com')
-            ->getQuery()
-            ->getResult();
 
-    }
 
 }

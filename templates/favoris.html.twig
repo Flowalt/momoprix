@@ -1,0 +1,83 @@
+{% extends "base.html.twig" %}
+
+{% block Copter %}
+
+
+<body>
+
+
+	<!-- favoris page -->
+	<div class="privacy">
+		<div class="container">
+			<!-- tittle heading -->
+			<h3 class="tittle-w3l">Favoris
+				
+			</h3>
+			<!-- //tittle heading -->
+			<div class="checkout-right">
+
+			{% if favoris | length >0 %}
+				<div class="table-responsive">
+					<table class="timetable_sub">
+						<thead>
+							<tr>
+								
+								<th>Product Name</th>
+								
+								<th> Details</th>
+							</tr>
+						</thead>
+						
+							<tr>
+							{% for item in favoris %}
+								
+
+								<td class="invert">{{item.name}}</td>
+								
+								
+								<td  class="invert">
+								<a href="{{path('details_product', {'id': item.idproduct}) }}" class="glyphicon glyphicon-remove-circle" style="color:black" >
+								</td>
+							</tr>
+								{% endfor %}
+						
+							
+							
+							
+							</table>
+	
+						</tbody>
+					</table>
+				</div>
+				{% else %}
+			<p>Le panier est vide</p>
+			{% endif %}
+			<br>
+		
+
+		</div>
+
+		
+
+		
+
+	</div>
+	
+	<script src="js/jquery-2.1.4.min.js"></script>
+	<!-- //jquery -->
+
+	
+	
+
+	
+
+	<!-- for bootstrap working -->
+	<script src="js/bootstrap.js"></script>
+	<!-- //for bootstrap working -->
+	<!-- //js-files -->
+
+</body>
+
+</html>
+
+{% endblock %}
