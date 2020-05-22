@@ -71,8 +71,10 @@
                         {% for address  in adressFacturation %}
                         <p> {{address.address}}</p>
                         {% endfor %}
+						{% if  adressFacturation|length <1 %}
 						<br>
 						<input  id ="addFac"type="submit" name="submit" value="Ajouter adresse de livraison" class="button" styled-input="text-aign:center" />
+						{% endif %}
 
 		        </div>
 			</div>

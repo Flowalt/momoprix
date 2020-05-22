@@ -26,6 +26,16 @@ class AddressRepository extends ServiceEntityRepository
             
     }
 
+    public function findOneAddressById($value): ?array
+    {
+        return $this->createQueryBuilder('p')
+            ->select('p')
+            ->andWhere('p.idaddress = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getResult();
+    }
+
     public function dysplayAddressFacturationByCustomerId($id){
 
         

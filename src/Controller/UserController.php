@@ -164,6 +164,7 @@ class UserController extends AbstractController {
         
         $address =  $adressRepository->dysplayAddressLivraisonByCustomerId($customer->getIdcustomer());
         $addressFact =  $adressRepository->dysplayAddressFacturationByCustomerId($customer->getIdcustomer());
+       
         
         
         return $this->render('profile.html.twig',[

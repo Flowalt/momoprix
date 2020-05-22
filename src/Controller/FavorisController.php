@@ -14,6 +14,9 @@ class FavorisController extends AbstractController {
         return $this->render('favoris.html.twig');
     }
 
+    function connect(){
+      
+    }
 
   function addFavoris(){
 
