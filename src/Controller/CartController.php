@@ -52,7 +52,8 @@ class CartController extends AbstractController {
     public function panier(SessionInterface $session, RepositoryProductRepository $productRepository, AddressRepository $addressRepository )
     {
 
-
+    
+        
     $panier = $session->get('panier',[]);
 
 

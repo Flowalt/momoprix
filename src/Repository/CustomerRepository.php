@@ -13,6 +13,8 @@ class CustomerRepository extends ServiceEntityRepository
         parent::__construct($registry, Customer::class);
     }
 
+
+
 public function findOneByIdJoinedToAddress()
 {
     $entityManager = $this->getEntityManager();

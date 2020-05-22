@@ -96,22 +96,8 @@ class UserController extends AbstractController {
                     $entityManager->flush();
                     $this->session->set('id', $user->getIdcustomer());
                     // dd($user);
-                    $articles=$productRepository->findAllArticle();
-                    $category=$cat->findAll();
                     
-                    
-                    return $this->render('index.html.twig', [
-                        'articles'=>$articles,
-                        'category'=>$category
-                       
-                    ]);
-                    
-        
-        
-        
-                    
-                    
-                    
+                    return $this  -> redirectToRoute('login');
         }else{
                 echo("Merci de remplir tous les champs");
                 return $this->render('signup.html.twig');
@@ -127,34 +113,37 @@ class UserController extends AbstractController {
     }          
         
     }
- 
-    function Edit(AddressRepository $adressRepository){
-        $entityManager = $this->getDoctrine()->getManager();
-        $customer= new Customer();
+    
+    public function edit(AddressRepository $adressRepository){
 
-       
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "intermarcher";
+        //Variable
+        $last=$_POST["Nom"];
+        $first = $_POST["Prenom"];
+        $email = $_POST["Email"];
+        $date= new \DateTime($_POST["Date"]);
+        $birth = $date -> format('d-m-y H:i:s'); 
 
-        $customer ->setLastname($_POST["Nom"]);
-        $customer ->setFirstname($_POST["Prenom"]);
-        $customer ->setEmail($_POST["Email"]);
-        $customer -> setDateOfBirth($_POST["Date"]);
-
-        $entityManager->persist($customer);
-        $entityManager->flush();
+        $customer = $this -> getUser(); 
+        $id= $customer -> getIdcustomer();
         
-        $address =  $adressRepository->dysplayAddressLivraisonByCustomerId(2);
-        $addressFact =  $adressRepository->dysplayAddressFacturationByCustomerId(2);
+     
+        // Create connection
+        $conn = mysqli_connect($servername, $username, $password, $dbname);
+        // Check connection
+      
+        $sql = "UPDATE `customer` SET`firstname`='$first',`lastname`='$last',`email`='$email', `date_of_birth`= '$birth' WHERE `idcustomer` = '$id' ";
+        $conn->query($sql);
+        mysqli_close($conn);
 
-        
-        return $this->render('profile.html.twig',[
-
-            'adressLivraison'=> $address,
-            'adressFacturation'=> $addressFact
-        ]);
-        
-
+        return $this->redirectToRoute('profil');
 
     }
+
+  
 
     function profile(AddressRepository $adressRepository, ProductRepository $productRepository, RepositoryCategoryRepository $cat)
     {   

@@ -94,6 +94,10 @@ details_product:
     path: /product{id}
     controller: App\Controller\ProductController::detailsbis
 
+createOrder:
+    path: /order
+    controller: App\Controller\OrderController::createOrder
+
 
     
 

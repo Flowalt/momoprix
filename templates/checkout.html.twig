@@ -2,327 +2,153 @@
 
 {% block Copter %}
 
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
-<!DOCTYPE html>
-<html lang="zxx">
+	<!--
+									Author: W3layouts
+									Author URL: http://w3layouts.com
+									License: Creative Commons Attribution 3.0 Unported
+									License URL: http://creativecommons.org/licenses/by/3.0/
+									-->
+	<!DOCTYPE html>
+	<html lang="zxx">
 
-<head>
-	<title>Grocery Shoppy an Ecommerce Category Bootstrap Responsive Web Template | Checkout :: w3layouts</title>
-	<!--/tags -->
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="keywords" content="Grocery Shoppy Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-	<script>
-		addEventListener("load", function () {
-			setTimeout(hideURLbar, 0);
-		}, false);
+		<style>
+			label {
+				display: block;
+				margin-bottom: 5px;
+			}
+		</style>
 
-		function hideURLbar() {
-			window.scrollTo(0, 1);
-		}
-	</script>
-	<!--//tags -->
-	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-	<link href="css/font-awesome.css" rel="stylesheet">
-	<!--pop-up-box-->
-	<link href="css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
-	<!--//pop-up-box-->
-	<!-- price range -->
-	<link rel="stylesheet" type="text/css" href="css/jquery-ui1.css">
-	<!-- fonts -->
-	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet">
-</head>
+		<body>
 
-<body>
-	
-	
+			<!-- //banner-2 -->
+			<!-- page -->
 
-	
-	
-	<!-- //banner-2 -->
-	<!-- page -->
-	
-	<!-- //page -->
-	<!-- checkout page -->
-	<div class="privacy">
-		<div class="container">
-			<!-- tittle heading -->
-			<h3 class="tittle-w3l">Checkout
-				<span class="heading-style">
-					<i></i>
-					<i></i>
-					<i></i>
-				</span>
-			</h3>
-			<!-- //tittle heading -->
-			<div class="checkout-right">
+			<!-- //page -->
+			<!-- checkout page -->
 
-			{% if items | length >0 %}
-				<div class="table-responsive">
-					<table class="timetable_sub">
-						<thead>
-							<tr>
-								<th>Product</th>
-								<th>Quality</th>
-								<th>Product Name</th>
-								<th>Price</th>
-								<th>Remove</th>
-							</tr>
-						</thead>
-						
-							<tr>
-							{% for item in items %}
-								<td class="invert-image">
-									<a href="single2.html">
-										<img src="public/images/a7.jpg" alt=" " class="img-responsive">
-									</a>
-								</td>
-								<td class="invert">
-									<div class="quantity">
-										<div class="quantity-select">
-											<a href="{{path('deleteQuantity', {'id': item.product.idproduct})}}" class="entry value-minus">&nbsp;</a>
-											<div class="entry value">
-												<span>{{item.quantity}}</span>
-											</div>
-											<a href="{{path('addQuantity', {'id': item.product.idproduct})}}" class="entry value-plus active">&nbsp;</a>
-										</div>
-									</div>
-								</td>
-								<td class="invert">{{item.product.name}}</td>
-								<td class="invert">{{item.product.price}} €</td>
-								
-								<td  class="invert">
-								<a href="{{path('removeProduct', {'id': item.product.idproduct}) }}" class="glyphicon glyphicon-remove-circle" style="color:black" >
-								</td>
-							</tr>
-								{% endfor %}
-						
-							<tfoot>
-							<td colspan="3" class="text-right"> Total: 
-							</td>
-							<td>{{total}} €</td>
-							
+				<div class="privacy"> <div class="container">
+					<form
+						action="{{path('createOrder')}}" method="post">
+						<!-- tittle heading -->
+						<h3 class="tittle-w3l">Checkout
+							<span class="heading-style">
+								<i></i>
+								<i></i>
+								<i></i>
+							</span>
+						</h3>
+						<!-- //tittle heading -->
+						<div class="checkout-right">
+
+							{% if items | length >0 %}
+								<div class="table-responsive">
+									<table class="timetable_sub">
+										<thead>
+											<tr>
+												<th>Product</th>
+												<th>Quality</th>
+												<th>Product Name</th>
+												<th>Price</th>
+												<th>Remove</th>
+											</tr>
+										</thead>
+
+										<tr>
+											{% for item in items %}
+												<td class="invert-image">
+													<a href="#">
+														<img src="public/images/{{item.product.url}}" alt=" " class="img-responsive">
+													</a>
+												</td>
+												<td class="invert">
+													<div class="quantity">
+														<div class="quantity-select">
+															<a href="{{path('deleteQuantity', {'id': item.product.idproduct})}}" class="entry value-minus">&nbsp;</a>
+															<div class="entry value">
+																<span>{{item.quantity}}</span>
+															</div>
+															<a href="{{path('addQuantity', {'id': item.product.idproduct})}}" class="entry value-plus active">&nbsp;</a>
+														</div>
+													</div>
+												</td>
+												<td class="invert">{{item.product.name}}</td>
+												<td class="invert">{{item.product.price}}
+													€</td>
+
+												<td class="invert">
+													<a href="{{path('removeProduct', {'id': item.product.idproduct}) }}" class="glyphicon glyphicon-remove-circle" style="color:black"></td>
+												</td>
+											</tr>
+										{% endfor %}
+										<tfoot>
+											<td colspan="3" class="text-right">
+												Total TTC:
+											</td>
+											<td><input type="hidden" name="prixTTC" value="{{total * 1.20}}">{{total  * 1.20}}
+												€</td>
+										</tfoot>
+										<tfoot>
+											<td colspan="3" class="text-right">
+												Total HT:
+											</td>
+											<td><input type="hidden" name="prixHT" value="{{total}}">{{total}}
+												€</td>
+										</tfoot>
+									</table>
+
+								</tbody>
 							</table>
-	
-						</tbody>
-					</table>
-				</div>
-				{% else %}
-			<p>Le panier est vide</p>
-			{% endif %}
-			<br>
-
-		<div class="container">
-        		<div class="row">
-           			<div class="col-md-6 col-sm-3">
-					   
-						<h3 class="agileinfo_sign">Adresse de Livraison</h3>
-                        {% for address  in adressLivraison %}
-                        <p> {{address.address}}</p>
-                        {% endfor %}
-					
+						</div>
+					{% else %}
+						<p>Le panier est vide</p>
+					{% endif %}
 					<br>
-					
+
+					<div class="container">
+						<div class="row">
+							<div class="col-md-6 col-sm-3">
+
+								<h3 class="agileinfo_sign">Adresse de Livraison</h3>
+								<label>
+									{% for address  in adressLivraison %}
+										<input type="radio" name="Livraison" value="{{address.idaddress}}">
+										{{address.address}}
+									</label>
+								{% endfor %}
+
+								<br>
+
+							</div>
+							<div class="col-md-6 col-sm-3">
+
+								<h3 class="agileinfo_sign">Adresse de Facturation</h3>
+								{% for address  in adressFacturation %}
+									<label>
+
+										<input type="radio" name="Facturation" value="{{address.idaddress}}" checked>
+										{{address.address}}
+										{{address.cp}}
+										{{address.city}}
+
+									</label>
+								{% endfor %}
+								<br>
+
+
+							</div>
+						</div>
 					</div>
-                	<div class="col-md-6 col-sm-3">
-					
-					<h3 class="agileinfo_sign">Adresse de Facturation</h3>
-                        {% for address  in adressFacturation %}
-                        <p> {{address.address}}</p>
-                        {% endfor %}
-						<br>
-						
 
-		        </div>
+				</div>
 			</div>
-
-
-		</div>
-		
-
-		</div>
-
-		</div>
-
-
-				
-
-			</div>
-			<div class="clearfix"> </div>
-		</div>
-
-		<div>
-				<div class="checkout-right-basket">
-						<a href="">Make a Payment
-							<span class="fa fa-hand-o-right" aria-hidden="true"></span>
-						</a>
+			<form action="{{path('createOrder')}}" method="post">
+				<div class="snipcart-details input.button">
+					<input type="submit" name="submit" value="Passer la commande" class="button"/>
+				</form>
 				</div>
 			
-		</div>
+		</body>
+	</html>
 
-	</div>
-	<!-- //checkout page -->
-	<!-- newsletter -->
-	
-	<!-- //newsletter -->
 
-	<!-- copyright -->
-
-	<!-- //copyright -->
-
-	<!-- js-files -->
-	<!-- jquery -->
-	<script src="js/jquery-2.1.4.min.js"></script>
-	<!-- //jquery -->
-
-	<!-- popup modal (for signin & signup)-->
-	<script src="js/jquery.magnific-popup.js"></script>
-	<script>
-		$(document).ready(function () {
-			$('.popup-with-zoom-anim').magnificPopup({
-				type: 'inline',
-				fixedContentPos: false,
-				fixedBgPos: true,
-				overflowY: 'auto',
-				closeBtnInside: true,
-				preloader: false,
-				midClick: true,
-				removalDelay: 300,
-				mainClass: 'my-mfp-zoom-in'
-			});
-
-		});
-	</script>
-	<!-- Large modal -->
-	<!-- <script>
-		$('#').modal('show');
-	</script> -->
-	<!-- //popup modal (for signin & signup)-->
-
-	<!-- cart-js -->
-	<script src="js/minicart.js"></script>
-	<script>
-		paypalm.minicartk.render(); //use only unique class names other than paypal1.minicart1.Also Replace same class name in css and minicart.min.js
-
-		paypalm.minicartk.cart.on('checkout', function (evt) {
-			var items = this.items(),
-				len = items.length,
-				total = 0,
-				i;
-
-			// Count the number of each item in the cart
-			for (i = 0; i < len; i++) {
-				total += items[i].get('quantity');
-			}
-
-			if (total < 3) {
-				alert('The minimum order quantity is 3. Please add more to your shopping cart before checking out');
-				evt.preventDefault();
-			}
-		});
-	</script>
-	<!-- //cart-js -->
-
-	<!--quantity-->
-	<script>
-		$('.value-plus').on('click', function () {
-			var divUpd = $(this).parent().find('.value'),
-				newVal = parseInt(divUpd.text(), 10) + 1;
-			divUpd.text(newVal);
-		});
-
-		$('.value-minus').on('click', function () {
-			var divUpd = $(this).parent().find('.value'),
-				newVal = parseInt(divUpd.text(), 10) - 1;
-			if (newVal >= 1) divUpd.text(newVal);
-		});
-	</script>
-	<!--quantity-->
-	<script>
-		$(document).ready(function (c) {
-			$('.close1').on('click', function (c) {
-				$('.rem1').fadeOut('slow', function (c) {
-					$('.rem1').remove();
-				});
-			});
-		});
-	</script>
-	<script>
-		$(document).ready(function (c) {
-			$('.close2').on('click', function (c) {
-				$('.rem2').fadeOut('slow', function (c) {
-					$('.rem2').remove();
-				});
-			});
-		});
-	</script>
-	<script>
-		$(document).ready(function (c) {
-			$('.close3').on('click', function (c) {
-				$('.rem3').fadeOut('slow', function (c) {
-					$('.rem3').remove();
-				});
-			});
-		});
-	</script>
-	<!--//quantity-->
-
-	
-	
-
-	<!-- smoothscroll -->
-	<script src="js/SmoothScroll.min.js"></script>
-	<!-- //smoothscroll -->
-
-	<!-- start-smooth-scrolling -->
-	<script src="js/move-top.js"></script>
-	<script src="js/easing.js"></script>
-	<script>
-		jQuery(document).ready(function ($) {
-			$(".scroll").click(function (event) {
-				event.preventDefault();
-
-				$('html,body').animate({
-					scrollTop: $(this.hash).offset().top
-				}, 1000);
-			});
-		});
-	</script>
-	<!-- //end-smooth-scrolling -->
-
-	<!-- smooth-scrolling-of-move-up -->
-	<script>
-		$(document).ready(function () {
-			/*
-			var defaults = {
-				containerID: 'toTop', // fading element id
-				containerHoverID: 'toTopHover', // fading element hover id
-				scrollSpeed: 1200,
-				easingType: 'linear' 
-			};
-			*/
-			$().UItoTop({
-				easingType: 'easeOutQuart'
-			});
-
-		});
-	</script>
-	<!-- //smooth-scrolling-of-move-up -->
-
-	<!-- for bootstrap working -->
-	<script src="js/bootstrap.js"></script>
-	<!-- //for bootstrap working -->
-	<!-- //js-files -->
-
-</body>
-
-</html>
-
-{% endblock %}
+</form></div></div><!-- js-files --><!-- jquery --><script src="js/jquery-2.1.4.min.js"></script><!-- //jquery --><!-- for bootstrap working --><script src="js/bootstrap.js"></script><!-- //for bootstrap working --><!-- //js-files --></body></html>{% endblock %}

@@ -93,6 +93,13 @@ class Address
         return $this->idaddress;
     }
 
+    public function setIdaddress(string $adr): self
+    {
+         $this->idaddress = $adr;
+
+         return $this;
+    }
+
     public function getType(): ?string
     {
         return $this->type;
@@ -193,6 +200,8 @@ class Address
     {
         return $this->customerIdcustomer;
     }
+
+    
 
     public function setCustomerIdcustomer(?Customer $customerIdcustomer): self
     {
