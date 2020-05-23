@@ -120,7 +120,7 @@
 									</label>
 								{% endfor %}
 								{% if adressLivraison | length <1 %}
-								<p> Veuillez vous connecter pour afficher ou créer une adresse</p>
+								<p> Veuillez vous connecter pour afficher ou créer une adresse dans votre profil. Si vous êtes connectés, ajouter une adresse dans votre profil</p>
 								{% endif %}
 								<br>
 
@@ -139,7 +139,7 @@
 									</label>
 								{% endfor %}
 								{% if adressFacturation | length <1 %}
-								<p> Veuillez vous connecter pour afficher ou créer une adresse</p>
+								<p> Veuillez vous connecter pour afficher ou créer une adresse dans votre profil. Si vous êtes connectés, ajouter une adresse dans votre profil</p>
 								{% endif %}
 								<br>
 
@@ -152,7 +152,11 @@
 			</div>
 			<form action="{{path('createOrder')}}" method="post">
 				<div class="snipcart-details input.button">
+				{% if adressFacturation | length <1 or adressLivraison | length <1 or  items | length <1 %}
+					<input type="submit" name="submit" value="Passer la commande" class="button" disabled/>
+				{% else %}
 					<input type="submit" name="submit" value="Passer la commande" class="button"/>
+				{% endif %}
 				</form>
 				</div>
 			

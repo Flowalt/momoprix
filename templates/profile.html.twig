@@ -44,8 +44,12 @@
                         </div>
 						<br>
 						<div class="styled-input agile-styled-input-top">
-                               Date de naissance: <input type="date" value="{{app.user.dateOfBirth|date('Y-m-d')}}" name="Date" required="">
-                        </div>
+								{% if (app.user.dateOfBirth is null) %}
+									Date de naissance: <input type="date" value="" name="Date" required="">
+								{% else %}
+                              		 Date de naissance: <input type="date" value="{{app.user.dateOfBirth|date('Y-m-d')}}" name="Date" required="">
+								{% endif %}
+						</div>
                        
 					</div>
 					<br>

@@ -12,6 +12,7 @@ use App\Entity\Order;
 use App\Repository\AddressRepository;
 use App\Repository\DeliveryRepository;
 use App\Repository\OrderRepository;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Validator\Constraints\DateTime;
 
 class OrderController extends AbstractController {
@@ -33,7 +34,7 @@ class OrderController extends AbstractController {
         ]);
     }
 
-    function createOrder(AddressRepository $addressRepository, OrderRepository $orders){
+    function createOrder(AddressRepository $addressRepository, OrderRepository $orders, SessionInterface $session){
         
       
         
@@ -63,9 +64,9 @@ class OrderController extends AbstractController {
         
         $delivery = new DeliveryController();
         $delivery -> add($orders, $customer ->getIdcustomer());
+
         
-
-
+        unset($_SESSION['_sf2_attributes']['panier']);
         return $this  -> redirectToRoute('order');
     }
 
