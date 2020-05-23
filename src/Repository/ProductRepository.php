@@ -59,14 +59,12 @@ class ProductRepository extends ServiceEntityRepository
      //filter par catégories
      public function findByCategory()
      {
-        echo("ok");
-       
-            
-       $name=$_POST['checkbox'];
-       echo($name);
-            
-          
-        
+        return $this->createQueryBuilder('j')
+            ->andWhere('j.categoryIdcategory = :id')
+            ->setParameter('id',$_POST["categories"])
+            ->getQuery()
+            ->getResult();
+
      }
 
 }

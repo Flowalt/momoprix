@@ -36,7 +36,7 @@ class UserController extends AbstractController {
 
 
     function CheckEmail():int{
-        $db = mysqli_connect('localhost', 'root', '', 'intermarcher');
+        $db = mysqli_connect('localhost', 'root', '', 'intermarchers');
 
         if (isset($_POST['Email'])) {
             $email = $_POST['Email'];
@@ -119,7 +119,7 @@ class UserController extends AbstractController {
         $servername = "localhost";
         $username = "root";
         $password = "";
-        $dbname = "intermarcher";
+        $dbname = "intermarchers";
         //Variable
         $last=$_POST["Nom"];
         $first = $_POST["Prenom"];
@@ -129,13 +129,15 @@ class UserController extends AbstractController {
 
         $customer = $this -> getUser(); 
         $id= $customer -> getIdcustomer();
+        $now = new \DateTime();
         
+        $updated= $now->format('Y-m-d H:i:s');
      
         // Create connection
         $conn = mysqli_connect($servername, $username, $password, $dbname);
         // Check connection
       
-        $sql = "UPDATE `customer` SET`firstname`='$first',`lastname`='$last',`email`='$email', `date_of_birth`= '$birth' WHERE `idcustomer` = '$id' ";
+        $sql = "UPDATE `customer` SET`firstname`='$first',`lastname`='$last',`email`='$email', `date_of_birth`= '$birth', `updated`= '$updated' WHERE `idcustomer` = '$id' ";
         $conn->query($sql);
         mysqli_close($conn);
 
@@ -149,7 +151,7 @@ class UserController extends AbstractController {
     {   
       
        $customer= $this->getUser(); 
-       dd($customer);
+      
  
         $address =  $adressRepository->dysplayAddressLivraisonByCustomerId($customer->getIdcustomer());
         $addressFact =  $adressRepository->dysplayAddressFacturationByCustomerId($customer->getIdcustomer());

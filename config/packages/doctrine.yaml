@@ -5,7 +5,7 @@ doctrine:
         server_version: '5.7'
         host: 'Localhost'
         port: '3306'
-        dbname: 'intermarcher'
+        dbname: 'intermarchers'
         user: 'root'
         password: ''
         charset: utf8

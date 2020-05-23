@@ -5,9 +5,6 @@ use App\Entity\Address;
 use App\Entity\Customer;
 use Symfony\Component\Security\Core\Security;
 
-
-
-
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;

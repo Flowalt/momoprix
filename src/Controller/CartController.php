@@ -56,10 +56,11 @@ class CartController extends AbstractController {
         
     $panier = $session->get('panier',[]);
 
-
+   
     $panierWithData = [];
     $total=0;
     foreach($panier as $id => $quantity){
+        
         $panierWithData[]=[
             'product'=> $productRepository->find($id),
             
@@ -68,6 +69,7 @@ class CartController extends AbstractController {
 
         $total=0;
 
+        
         foreach($panierWithData as $item){
             $totalItem= $item['product']->getPrice()* $item['quantity'];
             $total += $totalItem;

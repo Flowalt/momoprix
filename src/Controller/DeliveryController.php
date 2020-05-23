@@ -24,7 +24,7 @@ class DeliveryController extends AbstractController {
         $servername = "localhost";
         $username = "root";
         $password = "";
-        $dbname = "intermarcher";
+        $dbname = "intermarchers";
         
         $now = new \DateTime();
         $now->add(new \DateInterval('P4D'));

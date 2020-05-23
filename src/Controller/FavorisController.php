@@ -32,7 +32,7 @@ class FavorisController extends AbstractController {
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "intermarcher";
+    $dbname = "intermarchers";
 
     // Create connection
     $conn = mysqli_connect($servername, $username, $password, $dbname);
@@ -51,13 +51,11 @@ class FavorisController extends AbstractController {
 
   function displayFavoris(){
     
-   
-    
-   
+ 
       $servername = "localhost";
       $username = "root";
       $password = "";
-      $dbname = "intermarcher";
+      $dbname = "intermarchers";
   
       // Create connection    
       $conn = mysqli_connect($servername, $username, $password, $dbname);

@@ -35,10 +35,7 @@ class OrderController extends AbstractController {
 
     function createOrder(AddressRepository $addressRepository, OrderRepository $orders){
         
-        if(empty($_SESSION['_sf2_attributes']) ){ //if login in session is not set
-            // require_once('App/controller/HomeController.php'); 
-            return $this->redirectToRoute('login');
-         }
+      
         
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->getRepository(Order::class);
