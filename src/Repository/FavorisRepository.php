@@ -17,33 +17,7 @@ class FavorisRepository
         parent::__construct($registry, Product::class);
     }*/            
 
-    function displayFavoris(){
-      
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "intermarcher";
 
-        // Create connection    
-        $conn = mysqli_connect($servername, $username, $password, $dbname);
-        // Check connection
-        if (!$conn) {
-        die("Connection failed: " . mysqli_connect_error());
-        
-         
-        $Customer = $this ->getUser();
-        $idCustomer= $Customer->getIdcustomer();
-
-        $sql = "SELECT * FROM favoris f INNER JOIN product p On p.idproduct = f.product_idproduct where f.customer_idcustomer = $idCustomer ";
-
-        mysqli_query($conn, $sql);
-        mysqli_close($conn);
-
-     
-      
-        }
-
-}
 
 
 }

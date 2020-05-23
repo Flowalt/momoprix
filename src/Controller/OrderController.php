@@ -3,20 +3,37 @@
 namespace App\Controller;
 
 use App\Entity\Address;
+use App\Controller\Delivery;
+use App\Entity\Delivery as EntityDelivery;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 use App\Entity\Order;
 use App\Repository\AddressRepository;
+use App\Repository\DeliveryRepository;
+use App\Repository\OrderRepository;
 use Symfony\Component\Validator\Constraints\DateTime;
 
 class OrderController extends AbstractController {
 
-    function order(){
-        return $this->render('checkout.html.twig');
+    function order(OrderRepository $orderRepository, DeliveryRepository $deli){
+        
+        $customer = $this -> getUser();
+        $idcustomer = $customer -> getIdcustomer();
+        $order = $orderRepository -> findOneOrderById($idcustomer);
+        $idorder= $order[0];
+       
+        $delir = $deli -> findOneDeliveryById($order[0]);
+       
+        
+        return $this->render('payement.html.twig',[
+
+            'order'=> $idorder,
+            'delivery'=> $delir[0]
+        ]);
     }
 
-    function createOrder(AddressRepository $addressRepository){
+    function createOrder(AddressRepository $addressRepository, OrderRepository $orders){
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->getRepository(Order::class);
 
@@ -39,7 +56,14 @@ class OrderController extends AbstractController {
         $entityManager->persist($order);
         $entityManager->flush();
 
-        return $this  -> redirectToRoute('login');
+        
+        
+        $delivery = new DeliveryController();
+        $delivery -> add($orders, $customer ->getIdcustomer());
+        
+
+
+        return $this  -> redirectToRoute('order');
     }
 
 

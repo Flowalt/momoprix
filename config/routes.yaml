@@ -95,8 +95,12 @@ details_product:
     controller: App\Controller\ProductController::detailsbis
 
 createOrder:
-    path: /order
+    path: /newOrder
     controller: App\Controller\OrderController::createOrder
+
+order:
+    path: /order
+    controller: App\Controller\OrderController::Order
 
 
     

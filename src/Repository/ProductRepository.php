@@ -26,6 +26,7 @@ class ProductRepository extends ServiceEntityRepository
 
     }
     
+ 
 
    //filter par nom
     public function findByName()

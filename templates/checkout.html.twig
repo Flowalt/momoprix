@@ -113,6 +113,8 @@
 									{% for address  in adressLivraison %}
 										<input type="radio" name="Livraison" value="{{address.idaddress}}">
 										{{address.address}}
+										{{address.cp}}
+										{{address.city}}
 									</label>
 								{% endfor %}
 
