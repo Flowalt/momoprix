@@ -75,6 +75,17 @@ class CartController extends AbstractController {
     }
 
     $customer = $this -> getUser();
+    if ($customer == null){
+
+        $address =[];
+        $addressFact=[];
+        return $this-> render('checkout.html.twig', [
+            'items' => $panierWithData,
+            'total' => $total,
+            'adressLivraison' => $address,
+            'adressFacturation' => $addressFact
+        ]);
+    }else{
     $address =  $addressRepository->dysplayAddressLivraisonByCustomerId($customer->getIdcustomer());
     $addressFact = $addressRepository->dysplayAddressFacturationByCustomerId($customer->getIdcustomer());
 
@@ -84,7 +95,7 @@ class CartController extends AbstractController {
         'adressLivraison' => $address,
         'adressFacturation' => $addressFact
     ]);
-    
+    }
     //return $this->redirectToRoute('cart');
         
     

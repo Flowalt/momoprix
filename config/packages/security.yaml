@@ -42,6 +42,17 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
          - { path: ^/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-         - { path: ^/profil, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+         
+         - { path: ^/profil, roles: ROLE_USER }
+         - { path: ^/history, roles: ROLE_USER }
+         - { path: ^/favoris, roles: ROLE_USER }
+         - { path: ^/addFavoris, roles: ROLE_USER }
+         
+         - { path: ^/payement, roles: ROLE_USER }
+         - { path: ^/editProfil, roles: ROLE_USER }
+         - { path: ^/newOrder, roles: ROLE_USER }
+         
+
+         
 
 

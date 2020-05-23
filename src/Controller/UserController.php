@@ -147,21 +147,10 @@ class UserController extends AbstractController {
 
     function profile(AddressRepository $adressRepository, ProductRepository $productRepository, RepositoryCategoryRepository $cat)
     {   
-        //dd($_SESSION);
-       //$id = $_SESSION['_sf2_attributes']['id'];
+      
        $customer= $this->getUser(); 
-     
-  
-
-        if(empty($_SESSION['_sf2_attributes']) ){ //if login in session is not set
-           // require_once('App/controller/HomeController.php'); 
-           return $this->redirectToRoute('index');
-        }else{
-
-        
-
-        
-        
+       dd($customer);
+ 
         $address =  $adressRepository->dysplayAddressLivraisonByCustomerId($customer->getIdcustomer());
         $addressFact =  $adressRepository->dysplayAddressFacturationByCustomerId($customer->getIdcustomer());
        
@@ -177,5 +166,5 @@ class UserController extends AbstractController {
 
     }
     
-}
+
 

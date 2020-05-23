@@ -109,15 +109,20 @@
 							<div class="col-md-6 col-sm-3">
 
 								<h3 class="agileinfo_sign">Adresse de Livraison</h3>
+								{% if is_granted('IS_AUTHENTICATED_FULLY') %}
 								<label>
+								 
 									{% for address  in adressLivraison %}
 										<input type="radio" name="Livraison" value="{{address.idaddress}}">
 										{{address.address}}
 										{{address.cp}}
 										{{address.city}}
 									</label>
-								{% endfor %}
+									{% else %}
 
+									<p> Veuillez vous connecter pour afficher ou créer une adresse</p>
+								{% endfor %}
+								{% endif %}
 								<br>
 
 							</div>

@@ -10,34 +10,35 @@
 	<div class="privacy">
 		<div class="container">
 			<!-- tittle heading -->
-			<h3 class="tittle-w3l">Favoris
+			<h3 class="tittle-w3l">Mes commandes
 				
 			</h3>
 			<!-- //tittle heading -->
 			<div class="checkout-right">
 
-			{% if favoris | length >0 %}
+			{% if order | length >0 %}
 				<div class="table-responsive">
 					<table class="timetable_sub">
 						<thead>
 							<tr>
 								
-								<th>Product Name</th>
+								<th>Numero de commande</th>
 								
-								<th> Details</th>
+								<th> Date de commande</th>
+
+                                <th> Somme</th>
 							</tr>
 						</thead>
 						
 							<tr>
-							{% for item in favoris %}
+							{% for item in order %}
 								
 
-								<td class="invert">{{item.name}}</td>
+								<td class="invert">{{item.idorder}}</td>
+								<td class="invert">{{item.dateOrder|date('d-m-Y')}}</td>
+                                <td class="invert">{{item.prixttc}} €</td>
 								
 								
-								<td  class="invert">
-								<a href="{{path('details_product', {'id': item.idproduct}) }}" class="glyphicon glyphicon-remove-circle" style="color:black" >
-								</td>
 							</tr>
 								{% endfor %}
 						
@@ -50,7 +51,7 @@
 					</table>
 				</div>
 				{% else %}
-			<p>Aucun favoris ajouté </p>
+			<p>Aucune commande faites </p>
 			{% endif %}
 			<br>
 		

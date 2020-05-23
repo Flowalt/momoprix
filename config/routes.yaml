@@ -88,7 +88,7 @@ Favoris:
 
 history:
     path: /history
-    controller: App\Controller\OrderController::history
+    controller: App\Controller\HistoryController::history
 
 details_product:
     path: /product{id}
@@ -99,7 +99,7 @@ createOrder:
     controller: App\Controller\OrderController::createOrder
 
 order:
-    path: /order
+    path: /payement
     controller: App\Controller\OrderController::Order
 
 

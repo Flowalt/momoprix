@@ -18,6 +18,7 @@ class FavorisController extends AbstractController {
 
   function addFavoris(){
 
+    
     $Customer = $this -> getUser();
     $idCustomer= $Customer->getIdcustomer();
     $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
@@ -50,10 +51,9 @@ class FavorisController extends AbstractController {
 
   function displayFavoris(){
     
-    $tokenInterface = $this->get('security.token_storage')->getToken();
-    $isAuthenticated = $tokenInterface->isAuthenticated();
+   
     
-    if($isAuthenticated == true){
+   
       $servername = "localhost";
       $username = "root";
       $password = "";
@@ -78,11 +78,10 @@ class FavorisController extends AbstractController {
         'favoris'=>$rows
   
       ]);
+      
     
-    }else{
-        return  $this->redirectToRoute('login');
 
-    }
+    
 
     
 

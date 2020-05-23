@@ -24,5 +24,16 @@ class OrderRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    public function findOrderById($value)
+    {
+        return $this->createQueryBuilder('p')
+            ->select('p')
+            ->andWhere('p.customerIdcustomer = :val')
+            ->orderBy('p.idorder', 'DESC')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->execute();
+    }
+
 }
 
